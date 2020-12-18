@@ -1,6 +1,6 @@
 export interface User {
   _id: string;
   seller: boolean;
-  username: string;
+  email: string;
   created: Date;
 }

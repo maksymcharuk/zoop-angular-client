@@ -1,33 +1,50 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductsListComponent } from './components/products-list/products-list.component';
-import { CatalogComponent } from './pages/catalog/catalog.component';
-import { ProductDetailsComponent } from './pages/product-details/product-details.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
+
+import { BackofficeModule } from './modules/backoffice/backoffice.module';
+import { CustomerAccountModule } from './modules/customer-account/customer-account.module';
+import { StaticModule } from './modules/static/static.module';
+import { SharedModule } from './shared/shared.module';
+
+import { APIInterceptor } from './interceptors/api/api.interceptor';
+import { AuthenticationInterceptor } from './interceptors/authentication/authentication.interceptor';
+import { AuthenticationVerifyInterceptor } from './interceptors/authentication-verify/authentication-verify.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProductsListComponent,
-    CatalogComponent,
-    ProductDetailsComponent,
-    LoginComponent,
-    RegisterComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
     AppRoutingModule,
+    HttpClientModule,
+    NgbModule,
+    BackofficeModule,
+    CustomerAccountModule,
+    StaticModule,
+    SharedModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: APIInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationVerifyInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,39 @@
+<div class="offset-md-3 col-md-6 mt-5">
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
+    <div class="form-row">
+      <div class="col-md-12 mb-3">
+        <label for="inputEmail">Email address</label>
+        <input
+          formControlName="email"
+          type="email"
+          id="inputEmail"
+          class="form-control"
+          [class]="{ 'is-invalid': emailCtrl.invalid && emailCtrl.touched }">
+        <div *ngIf="emailCtrl.invalid && emailCtrl.touched" class="invalid-feedback">
+          <div *ngIf="emailCtrl.hasError('required')">
+            This field is required.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-12 mb-3">
+        <label for="inputPassword">Password</label>
+        <input
+          formControlName="password"
+          type="password"
+          id="inputPassword"
+          class="form-control"
+          [class]="{ 'is-invalid': passwordCtrl.invalid && passwordCtrl.touched }">
+        <div *ngIf="passwordCtrl.invalid && passwordCtrl.touched" class="invalid-feedback">
+          <div *ngIf="passwordCtrl.hasError('required')">
+            This field is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button #submitButton class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
+</div>

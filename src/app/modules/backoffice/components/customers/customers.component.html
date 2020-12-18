@@ -1,0 +1,35 @@
+<div class="customers">
+
+  <div class="customers__inner" *ngIf="customers$ | async as customers; else loading">
+    <div *ngIf="customers.length > 0; then customersList else firstCustomer"></div>
+
+    <ng-template #customersList>
+      <div class="customers__title">
+        <h4>Customers</h4>
+      </div>
+
+      <ul class="customers__list">
+        <li class="customers__list-item" *ngFor="let customer of customers">
+          <span class="customers__list-item-img"></span>
+          <span class="customers__list-item-name">{{ customer.name }}</span>
+          <button [routerLink]="['edit', customer.id]">Edit</button>
+        </li>
+      </ul>
+
+      <a class="customers__add-new" [routerLink]="['create']">Add new customer</a>
+    </ng-template>
+
+    <ng-template #firstCustomer>
+      <div class="customers__title">
+        <h4>You have no customers yet</h4>
+      </div>
+
+      <a class="customers__add-new" [routerLink]="['create']">Add new customer</a>
+    </ng-template>
+  </div>
+
+  <ng-template #loading>
+    <app-loader></app-loader>
+  </ng-template>
+
+</div>

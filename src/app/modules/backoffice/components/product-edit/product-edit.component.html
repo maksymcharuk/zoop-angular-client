@@ -1,0 +1,16 @@
+
+<div class="product-edit">
+
+  <div class="product-edit__inner" *ngIf="product$ | async as product; else loading">
+    <h1 class="h3 mb-3 font-weight-normal">Edit product</h1>
+    <app-product-form
+      [product]="product"
+      (save)="onSubmit($event)">
+    </app-product-form>
+  </div>
+
+  <ng-template #loading>
+    <app-loader></app-loader>
+  </ng-template>
+
+</div>

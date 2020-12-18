@@ -1,0 +1,40 @@
+<div class="orders">
+
+  <div class="orders__inner" *ngIf="orders$ | async as orders; else loading">
+    <div *ngIf="orders.length > 0; then ordersList else firstOrder"></div>
+
+    <ng-template #ordersList>
+      <div class="orders__title">
+        <h4>Orders</h4>
+      </div>
+
+      <ul class="orders__list">
+        <li class="orders__list-item" *ngFor="let order of orders">
+          <div><span>Status:</span> {{ order.status }}</div>
+          <div><span>Customer:</span> {{ order.customer.name }}</div>
+          <div><span>Products:</span></div>
+          <ul>
+            <li *ngFor="let product of order.products">
+              {{ product.name }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <a class="orders__add-new" [routerLink]="['create']">Add new Order</a>
+    </ng-template>
+
+    <ng-template #firstOrder>
+      <div class="orders__title">
+        <h4>You have no orders yet</h4>
+      </div>
+
+      <a class="orders__add-new" [routerLink]="['create']">Add new Order</a>
+    </ng-template>
+  </div>
+
+  <ng-template #loading>
+    <app-loader></app-loader>
+  </ng-template>
+
+</div>
