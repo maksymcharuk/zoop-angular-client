@@ -17,16 +17,4 @@ export class ProductsService {
   getProductById(id: string): Observable<Product> {
     return this.http.get<Product>(`/products/${id}`);
   }
-
-  createProduct(data: any) {
-    return this.http.post<Product>('/products', data);
-  }
-
-  updateProduct(id: string, data: any) {
-    return this.http.put<Product>(`/products/${id}`, data);
-  }
-
-  removeProduct(id: string) {
-    return this.http.delete<Product>(`/products/${id}`);
-  }
 }

@@ -6,12 +6,12 @@ import { AuthenticationGuard } from '../../guards/authentication/authentication.
 import { BackofficeComponent } from './backoffice.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductsComponent } from './components/products/products.component';
-import { ProductCreateComponent } from './components/product-create/product-create.component';
-import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { ProductCreateComponent } from './components/products/product-create/product-create.component';
+import { ProductEditComponent } from './components/products/product-edit/product-edit.component';
 import { OrdersComponent } from './components/orders/orders.component';
-import { OrderCreateComponent } from './components/order-create/order-create.component';
+import { OrderCreateComponent } from './components/orders/order-create/order-create.component';
 import { СustomersComponent } from './components/customers/customers.component';
-import { CustomerCreateComponent } from './components/customer-create/customer-create.component';
+import { CustomerCreateComponent } from './components/customers/customer-create/customer-create.component';
 import { AccountComponent } from './components/account/account.component';
 
 const routes: Routes = [

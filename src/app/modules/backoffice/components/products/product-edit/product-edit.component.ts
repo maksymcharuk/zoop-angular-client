@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { combineLatest, Subject } from 'rxjs';
-import { AlertsService } from '../../../../services/alerts/alerts.service';
-import { ProductsService } from '../../../../services/products/products.service';
+import { AlertsService } from '../../../../../services/alerts/alerts.service';
+import { ProductsService } from '../../../services/products/products.service';
 
 @Component({
   selector: 'app-product-edit',

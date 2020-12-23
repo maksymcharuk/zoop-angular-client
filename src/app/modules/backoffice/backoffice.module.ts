@@ -12,15 +12,15 @@ import { SharedModule } from '../../shared/shared.module';
 import { BackofficeComponent } from './backoffice.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductsComponent } from './components/products/products.component';
-import { ProductCreateComponent } from './components/product-create/product-create.component';
-import { ProductEditComponent } from './components/product-edit/product-edit.component';
-import { ProductFormComponent } from './components/product-form/product-form.component';
+import { ProductCreateComponent } from './components/products/product-create/product-create.component';
+import { ProductEditComponent } from './components/products/product-edit/product-edit.component';
+import { ProductFormComponent } from './components/products/product-form/product-form.component';
 import { OrdersComponent } from './components/orders/orders.component';
-import { OrderCreateComponent } from './components/order-create/order-create.component';
-import { OrderFormComponent } from './components/order-form/order-form.component';
+import { OrderCreateComponent } from './components/orders/order-create/order-create.component';
+import { OrderFormComponent } from './components/orders/order-form/order-form.component';
 import { СustomersComponent } from './components/customers/customers.component';
-import { CustomerCreateComponent } from './components/customer-create/customer-create.component';
-import { CustomerFormComponent } from './components/customer-form/customer-form.component';
+import { CustomerCreateComponent } from './components/customers/customer-create/customer-create.component';
+import { CustomerFormComponent } from './components/customers/customer-form/customer-form.component';
 import { AccountComponent } from './components/account/account.component';
 
 @NgModule({

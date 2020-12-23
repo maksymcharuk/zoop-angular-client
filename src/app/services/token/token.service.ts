@@ -85,8 +85,6 @@ export class TokenService {
 
     this.localStorage.setItem('token', authResult.token);
     this.localStorage.setItem('exp', JSON.stringify(exp.valueOf()));
-    this.localStorage.setItem('user', {
-      user: this._currentUser,
-    });
+    this.localStorage.setItem('user', this._currentUser);
   }
 }

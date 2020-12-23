@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AlertsService } from '../../../../services/alerts/alerts.service';
-import { ProductsService } from '../../../../services/products/products.service';
+import { Router } from '@angular/router';
+import { AlertsService } from '../../../../../services/alerts/alerts.service';
+import { ProductsService } from '../../../services/products/products.service';
 
 @Component({
   selector: 'app-product-create',
@@ -10,7 +10,6 @@ import { ProductsService } from '../../../../services/products/products.service'
 })
 export class ProductCreateComponent implements OnInit {
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private alertService: AlertsService,
     private productsService: ProductsService

@@ -6,8 +6,16 @@
     <!-- <a class="p-2 text-dark" href="#">Features</a>
     <a class="p-2 text-dark" href="#">Enterprise</a>
     <a class="p-2 text-dark" href="#">Support</a> -->
-    <a class="p-2 text-dark" [routerLink]="['/sign-in']">Sign In</a>
+    <div *ngIf="isUserSignedIn then signedInBlock else signedOutBlock"></div>
+    <ng-template #signedInBlock>
+      <a class="p-2 text-dark" [routerLink]="['/catalog']">Catalog</a>
+      <a class="p-2 text-dark" [routerLink]="['/customer-account']">My account</a>
+      <a *ngIf="isUserSeller" class="p-2 text-dark" [routerLink]="['/backoffice']">Backoffice</a>
+    </ng-template >
+    <ng-template #signedOutBlock>
+      <a class="p-2 text-dark" [routerLink]="['/sign-in']">Sign In</a>
+    </ng-template>
   </nav>
-  <a class="btn btn-outline-primary" [routerLink]="['/sign-up']">Sign up</a>
+  <a *ngIf="isUserSignedOut" class="btn btn-outline-primary" [routerLink]="['/sign-up']">Sign up</a>
 </header>
 <router-outlet></router-outlet>

@@ -18,15 +18,15 @@ export class UserService {
 
   constructor(private tokenService: TokenService) {}
 
-  isSeller() {
-    return this.currentUser.seller;
+  public isSeller() {
+    return this.currentUser && this.currentUser.seller;
   }
 
-  isSignedIn() {
+  public isSignedIn() {
     return this.tokenService.isSignedIn();
   }
 
-  isSignedOut() {
+  public isSignedOut() {
     return this.tokenService.isSignedOut();
   }
 }
