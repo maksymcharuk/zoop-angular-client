@@ -23,7 +23,7 @@ export class ProductCreateComponent implements OnInit {
         this.router.navigate(['backoffice', 'products']);
       },
       (err) => {
-        this.alertService.showAlertDanger(err.error.errors[0]);
+        this.alertService.showAlertDanger(err.message);
       }
     );
   }

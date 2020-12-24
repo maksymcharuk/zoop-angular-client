@@ -15,6 +15,10 @@ import { ProductsComponent } from './components/products/products.component';
 import { ProductCreateComponent } from './components/products/product-create/product-create.component';
 import { ProductEditComponent } from './components/products/product-edit/product-edit.component';
 import { ProductFormComponent } from './components/products/product-form/product-form.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { CategoryCreateComponent } from './components/categories/category-create/category-create.component';
+import { CategoryEditComponent } from './components/categories/category-edit/category-edit.component';
+import { CategoryFormComponent } from './components/categories/category-form/category-form.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderCreateComponent } from './components/orders/order-create/order-create.component';
 import { OrderFormComponent } from './components/orders/order-form/order-form.component';
@@ -31,6 +35,10 @@ import { AccountComponent } from './components/account/account.component';
     ProductCreateComponent,
     ProductEditComponent,
     ProductFormComponent,
+    CategoriesComponent,
+    CategoryCreateComponent,
+    CategoryEditComponent,
+    CategoryFormComponent,
     OrdersComponent,
     OrderCreateComponent,
     OrderFormComponent,

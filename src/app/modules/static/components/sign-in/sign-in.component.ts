@@ -67,7 +67,7 @@ export class SignInComponent implements OnInit {
         },
         (err) => {
           this.submitButton.nativeElement.removeAttribute('disabled');
-          this.alertService.showAlertDanger(err.error.message);
+          this.alertService.showAlertDanger(err.message);
         }
       );
   }

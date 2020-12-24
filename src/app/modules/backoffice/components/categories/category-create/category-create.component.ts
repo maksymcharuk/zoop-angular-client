@@ -23,7 +23,7 @@ export class CategoryCreateComponent implements OnInit {
         this.router.navigate(['backoffice', 'categories']);
       },
       (err) => {
-        this.alertService.showAlertDanger(err.error.errors[0]);
+        this.alertService.showAlertDanger(err.message);
       }
     );
   }

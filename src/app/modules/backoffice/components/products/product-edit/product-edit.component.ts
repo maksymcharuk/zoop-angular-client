@@ -30,7 +30,7 @@ export class ProductEditComponent implements OnInit {
           this.product$.next(res);
         },
         (err) => {
-          this.alertService.showAlertDanger(err.error.errors[0]);
+          this.alertService.showAlertDanger(err.message);
         }
       );
     });
@@ -42,7 +42,7 @@ export class ProductEditComponent implements OnInit {
         this.router.navigate(['backoffice', 'products']);
       },
       (err) => {
-        this.alertService.showAlertDanger(err.error.errors[0]);
+        this.alertService.showAlertDanger(err.message);
       }
     );
   }

@@ -46,7 +46,7 @@ export class OrderCreateComponent implements OnInit {
           this.router.navigate(['shops', this.shopId, 'orders']);
         },
         (err) => {
-          this.alertService.showAlertDanger(err.error.errors[0]);
+          this.alertService.showAlertDanger(err.message);
         }
       );
   }

@@ -34,7 +34,7 @@ export class CustomerCreateComponent implements OnInit {
           this.router.navigate(['shops', this.shopId, 'customers']);
         },
         (err) => {
-          this.alertService.showAlertDanger(err.error.errors[0]);
+          this.alertService.showAlertDanger(err.message);
         }
       );
   }

@@ -7,7 +7,7 @@ import { CategoriesService } from '../../services/categories/categories.service'
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss'],
 })
-export class CategorysComponent implements OnInit {
+export class CategoriesComponent implements OnInit {
   public categories: any[];
 
   constructor(private categoriesService: CategoriesService) {}

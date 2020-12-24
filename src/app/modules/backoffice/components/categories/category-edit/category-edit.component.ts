@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
+
 import { AlertsService } from '../../../../../services/alerts/alerts.service';
 import { CategoriesService } from '../../../services/categories/categories.service';
 
@@ -29,8 +31,8 @@ export class CategoryEditComponent implements OnInit {
         (res: any) => {
           this.category$.next(res);
         },
-        (err) => {
-          this.alertService.showAlertDanger(err.error.errors[0]);
+        (err: HttpErrorResponse) => {
+          this.alertService.showAlertDanger(err.error.message);
         }
       );
     });
@@ -41,8 +43,8 @@ export class CategoryEditComponent implements OnInit {
       (res) => {
         this.router.navigate(['backoffice', 'categories']);
       },
-      (err) => {
-        this.alertService.showAlertDanger(err.error.errors[0]);
+      (err: HttpErrorResponse) => {
+        this.alertService.showAlertDanger(err.error.message);
       }
     );
   }

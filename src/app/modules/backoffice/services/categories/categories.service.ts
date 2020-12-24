@@ -14,6 +14,13 @@ export class CategoriesService {
     return this.http.get<Category[]>('/backoffice/categories');
   }
 
+  getSuitableParents(id?: string): Observable<Category[]> {
+    return this.http.get<Category[]>(
+      '/backoffice/categories-filtered/all-suitable-parents',
+      { params: { id } }
+    );
+  }
+
   getCategoryById(id: string): Observable<Category> {
     return this.http.get<Category>(`/backoffice/categories/${id}`);
   }

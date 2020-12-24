@@ -5,13 +5,13 @@
 
     <ng-template #categoriesList>
       <div class="categories__title">
-        <h4>Categorys</h4>
+        <h4>Categories</h4>
       </div>
 
       <ul class="categories__list">
         <li class="categories__list-item" *ngFor="let category of categories">
           <span class="categories__list-item-img"></span>
-          <span class="categories__list-item-name">{{ category.name }} - ${{ category.price }}</span>
+          <span class="categories__list-item-name">{{ category.name }}</span>
           <button class="btn btn-secondary categories__list-item-button" [routerLink]="['edit', category._id]">Edit</button>
           <button class="btn btn-danger categories__list-item-button" (click)="deleteCategory(category._id)">Delete</button>
         </li>

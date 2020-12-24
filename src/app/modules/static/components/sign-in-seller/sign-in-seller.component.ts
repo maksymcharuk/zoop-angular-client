@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { AuthenticationService } from '../../../../services/authentication/authentication.service';
 import { AlertsService } from '../../../../services/alerts/alerts.service';
@@ -64,9 +65,9 @@ export class SignInSellerComponent implements OnInit {
             ? this.router.navigate([this.returnUrl])
             : this.router.navigate(['backoffice']);
         },
-        (err) => {
+        (err: HttpErrorResponse) => {
           this.submitButton.nativeElement.removeAttribute('disabled');
-          this.alertService.showAlertDanger(err.error.message);
+          this.alertService.showAlertDanger(err.message);
         }
       );
   }

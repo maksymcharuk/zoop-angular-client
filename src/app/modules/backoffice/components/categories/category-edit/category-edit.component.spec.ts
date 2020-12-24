@@ -9,10 +9,10 @@ import { CategoriesService } from '../../../services/categories/categories.servi
 describe('CategoryEditComponent', () => {
   let component: CategoryEditComponent;
   let fixture: ComponentFixture<CategoryEditComponent>;
-  let testCategorys;
-  let fakeCategorysService;
-  let getCategorysSpy;
-  let updateCategorySpy;
+  let testCategories;
+  let fakeCategoriesService;
+  let getCategoriesSpy;
+  let updateCategoriespy;
   const shopId = 1;
   const categoryId = 1;
 
@@ -24,20 +24,20 @@ describe('CategoryEditComponent', () => {
   };
 
   beforeEach(async(() => {
-    testCategorys = [
+    testCategories = [
       { id: 1, name: 'Category 1' },
       { id: 2, name: 'Category 2' },
       { id: 3, name: 'Category 3' },
     ];
-    fakeCategorysService = jasmine.createSpyObj('CategorysService', [
-      'getCategorys',
+    fakeCategoriesService = jasmine.createSpyObj('CategoriesService', [
+      'getCategories',
       'updateCategory',
     ]);
-    getCategorysSpy = fakeCategorysService.getCategorys.and.returnValue(
-      of(testCategorys)
+    getCategoriesSpy = fakeCategoriesService.getCategories.and.returnValue(
+      of(testCategories)
     );
-    updateCategorySpy = fakeCategorysService.updateCategory.and.returnValue(
-      of(testCategorys[0])
+    updateCategoriespy = fakeCategoriesService.updateCategory.and.returnValue(
+      of(testCategories[0])
     );
 
     TestBed.configureTestingModule({
@@ -45,7 +45,7 @@ describe('CategoryEditComponent', () => {
       declarations: [CategoryEditComponent],
       providers: [
         { provide: ActivatedRoute, useValue: fakeActivatedRoute },
-        { provide: CategoriesService, useValue: fakeCategorysService },
+        { provide: CategoriesService, useValue: fakeCategoriesService },
       ],
     }).compileComponents();
   }));

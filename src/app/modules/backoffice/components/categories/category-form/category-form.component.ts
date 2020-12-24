@@ -2,6 +2,9 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Status } from './../../../enums';
+import { CategoriesService } from '../../../services/categories/categories.service';
+import { Category } from '../../../interfaces';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-category-form',
@@ -9,26 +12,23 @@ import { Status } from './../../../enums';
   styleUrls: ['./category-form.component.scss'],
 })
 export class CategoryFormComponent implements OnInit {
-  @Input() category;
+  @Input() category: Category = {} as Category;
 
   @Output() save: EventEmitter<any> = new EventEmitter();
 
   public categoryForm: FormGroup;
+  public categories: Category[];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private categoriesService: CategoriesService
+  ) {}
 
   ngOnInit(): void {
     this.categoryForm = this.fb.group({
       name: ['', Validators.required],
-      price: ['', Validators.required],
-      shortDescription: [''],
       description: [''],
-      imageUrl: [''],
-      stringId: [''],
-      color: [''],
-      height: [''],
-      width: [''],
-      weight: [''],
+      parentCategory: [''],
       status: [''],
     });
 
@@ -37,7 +37,18 @@ export class CategoryFormComponent implements OnInit {
       this.categoryForm
         .get('status')
         .patchValue(this.category.status === Status.Active);
+      if (this.category.parentCategory) {
+        this.categoryForm
+          .get('parentCategory')
+          .patchValue(this.category.parentCategory._id);
+      }
     }
+
+    this.categoriesService
+      .getSuitableParents(this.category._id)
+      .subscribe((categories: Category[]) => {
+        this.categories = categories;
+      });
   }
 
   onSubmit() {
@@ -45,12 +56,25 @@ export class CategoryFormComponent implements OnInit {
       return;
     }
 
-    this.save.emit({
-      name: this.categoryForm.get('name').value,
-      description: this.categoryForm.get('description').value,
-      status: this.categoryForm.get('status').value
-        ? Status.Active
-        : Status.Inactive,
-    });
+    this.save.emit(
+      this.clean({
+        name: this.categoryForm.get('name').value,
+        description: this.categoryForm.get('description').value,
+        parentCategory: this.categoryForm.get('parentCategory').value,
+        status: this.categoryForm.get('status').value
+          ? Status.Active
+          : Status.Inactive,
+      })
+    );
+  }
+
+  clean(obj) {
+    for (var propName in obj) {
+      if (!obj[propName]) {
+        delete obj[propName];
+      }
+    }
+
+    return obj;
   }
 }
