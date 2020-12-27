@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertsService } from '../../../../../services/alerts/alerts.service';
+import { AlertsService } from '../../../../../shared/services/alerts/alerts.service';
 import { CategoriesService } from '../../../services/categories/categories.service';
 
 @Component({

@@ -10,7 +10,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-import { AuthenticationService } from '../../services/authentication/authentication.service';
+import { AuthenticationService } from '../../shared/services/authentication/authentication.service';
 
 @Injectable()
 export class AuthenticationVerifyInterceptor implements HttpInterceptor {

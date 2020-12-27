@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 
 import { BackofficeModule } from './modules/backoffice/backoffice.module';
 import { CustomerAccountModule } from './modules/customer-account/customer-account.module';
-import { StaticModule } from './modules/static/static.module';
+import { ShopModule } from './modules/shop/shop.module';
 import { SharedModule } from './shared/shared.module';
 
 import { APIInterceptor } from './interceptors/api/api.interceptor';
@@ -27,7 +27,7 @@ import { AuthenticationVerifyInterceptor } from './interceptors/authentication-v
     NgbModule,
     BackofficeModule,
     CustomerAccountModule,
-    StaticModule,
+    ShopModule,
     SharedModule,
   ],
   providers: [

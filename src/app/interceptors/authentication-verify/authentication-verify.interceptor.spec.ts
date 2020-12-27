@@ -4,7 +4,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Router } from '@angular/router';
 
 import { AuthenticationVerifyInterceptor } from './authentication-verify.interceptor';
-import { AuthenticationService } from '../../services/authentication/authentication.service';
+import { AuthenticationService } from '../../shared/services/authentication/authentication.service';
 
 describe('AuthenticationVerifyInterceptor', () => {
   beforeEach(() => {

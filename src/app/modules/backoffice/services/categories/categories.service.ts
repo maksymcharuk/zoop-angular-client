@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Category } from '../../interfaces';
@@ -15,9 +15,15 @@ export class CategoriesService {
   }
 
   getSuitableParents(id?: string): Observable<Category[]> {
+    let params = {};
+
+    if (id) {
+      params['id'] = id;
+    }
+
     return this.http.get<Category[]>(
       '/backoffice/categories-filtered/all-suitable-parents',
-      { params: { id } }
+      { params: params }
     );
   }
 

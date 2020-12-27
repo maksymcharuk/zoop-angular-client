@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertsService } from '../../../../../services/alerts/alerts.service';
+import { AlertsService } from '../../../../../shared/services/alerts/alerts.service';
 import { OrdersService } from '../../../services/orders/orders.service';
-import { GoogleAnalyticsService } from '../../../../../services/google-analytics/google-analytics.service';
+import { GoogleAnalyticsService } from '../../../../../shared/services/google-analytics/google-analytics.service';
 
 @Component({
   selector: 'app-order-create',

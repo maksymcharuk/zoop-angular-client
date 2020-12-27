@@ -8,7 +8,7 @@ import {
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { LocalStorageService } from '../../services/local-storage/local-storage.service';
+import { LocalStorageService } from '../../shared/services/local-storage/local-storage.service';
 
 @Injectable()
 export class AuthenticationInterceptor implements HttpInterceptor {

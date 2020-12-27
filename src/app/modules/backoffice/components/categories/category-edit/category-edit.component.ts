@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 
-import { AlertsService } from '../../../../../services/alerts/alerts.service';
+import { AlertsService } from '../../../../../shared/services/alerts/alerts.service';
 import { CategoriesService } from '../../../services/categories/categories.service';
 
 @Component({

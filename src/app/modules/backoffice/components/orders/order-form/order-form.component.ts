@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { CustomersService } from '../../../services/customers/customers.service';
-import { ProductsService } from '../../../../../services/products/products.service';
+import { ProductsService } from '../../../../../shared/services/products/products.service';
 
 @Component({
   selector: 'app-order-form',

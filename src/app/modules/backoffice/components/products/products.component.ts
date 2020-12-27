@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { AlertsService } from '../../../../services/alerts/alerts.service';
+import { AlertsService } from '../../../../shared/services/alerts/alerts.service';
 import { ProductsService } from '../../services/products/products.service';
 
 @Component({

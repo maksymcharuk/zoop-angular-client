@@ -1,4 +1,4 @@
-import { UserService } from './../../services/user/user.service';
+import { UserService } from '../../shared/services/user/user.service';
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
@@ -6,7 +6,6 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
-import { TokenService } from 'src/app/services/token/token.service';
 
 @Injectable({
   providedIn: 'root',

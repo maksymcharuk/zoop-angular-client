@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 
 import { OrdersService } from './orders.service';
-import { LocalStorageService } from '../../../../services/local-storage/local-storage.service';
+import { LocalStorageService } from '../../../../shared/services/local-storage/local-storage.service';
 
 describe('OrdersService', () => {
   let http: HttpTestingController;

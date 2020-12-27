@@ -4,7 +4,7 @@ import { ProductEditComponent } from './product-edit.component';
 import { ActivatedRoute } from '@angular/router';
 import { of, from } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ProductsService } from '../../../../../services/products/products.service';
+import { ProductsService } from '../../../../../shared/services/products/products.service';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;
