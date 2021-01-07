@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { mergeMap, map } from 'rxjs/operators';
 
 import { Product } from '../../../../interfaces';
 
 import { ProductsService } from '../../../../shared/services/products/products.service';
+import { CartProduct } from '../../interfaces/cart-product.inteface';
 import { CartService } from './../../services/cart/cart.service';
 
 @Component({
@@ -11,7 +13,7 @@ import { CartService } from './../../services/cart/cart.service';
   styleUrls: ['./catalog.component.scss'],
 })
 export class CatalogComponent implements OnInit {
-  public products: any[];
+  public products: CartProduct[];
 
   constructor(
     private productsService: ProductsService,
@@ -19,16 +21,35 @@ export class CatalogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productsService.getProducts().subscribe((products) => {
-      this.products = products;
-    });
+    this.productsService
+      .getProducts()
+      .pipe(
+        mergeMap((products: Product[]) => {
+          return this.cartService.products$.pipe(
+            map((cartProducts: CartProduct[]) => {
+              return products.map((product: Product) => {
+                const p = cartProducts.find(
+                  (p) => product._id === p.product._id
+                );
+                return {
+                  product: p ? p.product : product,
+                  quantity: p ? p.quantity : 0,
+                };
+              });
+            })
+          );
+        })
+      )
+      .subscribe((products: CartProduct[]) => {
+        this.products = products;
+      });
   }
 
-  addToCart(product: Product, quantity: number) {
-    this.cartService.add({ product, quantity });
+  addToCart(cartProduct: CartProduct) {
+    this.cartService.add(cartProduct);
   }
 
-  removeFromCart(product: Product) {
-    this.cartService.remove(product);
+  removeFromCart(cartProduct: CartProduct) {
+    this.cartService.remove(cartProduct.product);
   }
 }

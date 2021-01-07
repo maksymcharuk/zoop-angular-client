@@ -1,3 +1,14 @@
-.brand-link {
-  color: inherit
+$namespace: '.header';
+
+#{$namespace} {
+
+  .brand-link {
+    color: inherit
+  }
+
+  .btn + .btn {
+    margin-left: 1rem;
+  }
 }
+
+

@@ -1,4 +1,4 @@
-<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
+<header class="header d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
   <h5 class="my-0 mr-md-auto font-weight-normal">
     <a class="brand-link" [routerLink]="['/']">LETTU.CO</a>
   </h5>
@@ -17,5 +17,5 @@
     </ng-template>
   </nav>
   <a *ngIf="isUserSignedOut" class="btn btn-outline-primary" [routerLink]="['/sign-up']">Sign up</a>
-  <a class="btn btn-outline-secondary ml-3" [routerLink]="['/cart']">Cart ({{ cartProducts.length }})</a>
+  <a class="btn btn-outline-secondary" [routerLink]="['/cart']">Cart ({{ cartProducts.length }})</a>
 </header>

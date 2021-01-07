@@ -63,6 +63,26 @@
   flex: 1;
 }
 
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -2% 0 0 -2%;
+
+  &__item {
+    flex: 0 0 47%;
+
+    margin: 2% 0 0 2%;
+  }
+}
+
+.add-to-cart-label {
+  margin-bottom: 0;
+}
+
+.add-to-cart-btn {
+  flex: 0 0 auto;
+}
+
 @media (min-width: 768px) {
   .flex-md-equal>* {
     -ms-flex: 1;
