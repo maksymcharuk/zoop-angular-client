@@ -1,20 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 
-import { CartProduct } from '../../interfaces/cart-product.inteface';
+import { OrderProduct } from '../../interfaces/order-product.inteface';
+import { Cart } from '../../interfaces/cart.interface';
 
 import { UserService } from '../../../../shared/services/user/user.service';
 import { CartService } from '../../services/cart/cart.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   public isUserSeller = this.userService.isSeller();
   public isUserSignedIn = this.userService.isSignedIn();
   public isUserSignedOut = this.userService.isSignedOut();
-  public cartProducts: CartProduct[] = [];
+  public cartProducts: OrderProduct[] = [];
+
+  private onDestroy$ = new Subject();
 
   constructor(
     private userService: UserService,
@@ -22,8 +27,15 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cartService.products$.subscribe((products: CartProduct[]) => {
-      this.cartProducts = products;
-    });
+    this.cartService.cart$
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((cart: Cart) => {
+        this.cartProducts = cart.products;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
   }
 }

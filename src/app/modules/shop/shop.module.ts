@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { SharedModule } from '../../shared/shared.module';
+
 import { ShopRoutingModule } from './shop-routing.module';
 
 import { ShopComponent } from './shop.component';
@@ -33,6 +35,7 @@ import { SignInSellerComponent } from './components/sign-in-seller/sign-in-selle
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
   providers: [],
 })

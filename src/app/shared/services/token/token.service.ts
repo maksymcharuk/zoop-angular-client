@@ -56,6 +56,7 @@ export class TokenService {
         this.localStorage.removeItem('token');
         this.localStorage.removeItem('exp');
         this.localStorage.removeItem('user');
+        this.localStorage.removeItem('cartProducts');
       }),
       shareReplay()
     );

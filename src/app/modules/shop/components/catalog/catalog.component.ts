@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { mergeMap, map } from 'rxjs/operators';
 
 import { Product } from '../../../../interfaces';
+import { OrderProduct, Cart } from '../../interfaces';
 
 import { ProductsService } from '../../../../shared/services/products/products.service';
-import { CartProduct } from '../../interfaces/cart-product.inteface';
 import { CartService } from './../../services/cart/cart.service';
 
 @Component({
@@ -13,7 +13,8 @@ import { CartService } from './../../services/cart/cart.service';
   styleUrls: ['./catalog.component.scss'],
 })
 export class CatalogComponent implements OnInit {
-  public products: CartProduct[];
+  public products: OrderProduct[];
+  public loading = true;
 
   constructor(
     private productsService: ProductsService,
@@ -25,10 +26,10 @@ export class CatalogComponent implements OnInit {
       .getProducts()
       .pipe(
         mergeMap((products: Product[]) => {
-          return this.cartService.products$.pipe(
-            map((cartProducts: CartProduct[]) => {
+          return this.cartService.cart$.pipe(
+            map((cart: Cart) => {
               return products.map((product: Product) => {
-                const p = cartProducts.find(
+                const p = cart.products.find(
                   (p) => product._id === p.product._id
                 );
                 return {
@@ -40,16 +41,23 @@ export class CatalogComponent implements OnInit {
           );
         })
       )
-      .subscribe((products: CartProduct[]) => {
+      .subscribe((products: OrderProduct[]) => {
         this.products = products;
+        this.loading = false;
       });
   }
 
-  addToCart(cartProduct: CartProduct) {
-    this.cartService.add(cartProduct);
+  addToCart(orderProduct: OrderProduct) {
+    this.loading = true;
+    this.cartService.addToCart(orderProduct).subscribe(() => {
+      this.loading = false;
+    });
   }
 
-  removeFromCart(cartProduct: CartProduct) {
-    this.cartService.remove(cartProduct.product);
+  removeFromCart(orderProduct: OrderProduct) {
+    this.loading = true;
+    this.cartService.removeFromCart(orderProduct.product._id).subscribe(() => {
+      this.loading = false;
+    });
   }
 }

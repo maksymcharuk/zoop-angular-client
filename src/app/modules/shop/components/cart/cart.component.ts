@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { mergeMap, map } from 'rxjs/operators';
 
-import { Product } from '../../../../interfaces';
-
-import { ProductsService } from '../../../../shared/services/products/products.service';
-import { CartProduct } from '../../interfaces/cart-product.inteface';
+import { Cart } from '../../interfaces/cart.interface';
+import { OrderProduct } from '../../interfaces/order-product.inteface';
 import { CartService } from '../../services/cart/cart.service';
 
 @Component({
@@ -13,20 +10,24 @@ import { CartService } from '../../services/cart/cart.service';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-  public products: CartProduct[];
+  public products: OrderProduct[];
+  public loading = false;
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.cartService.products$.subscribe((products: CartProduct[]) => {
-      this.products = products;
+    this.loading = true;
+    this.cartService.cart$.subscribe((cart: Cart) => {
+      this.products = cart.products;
+      this.loading = false;
     });
   }
 
-  removeFromCart(cartProduct: CartProduct) {
-    this.products = this.products.filter(
-      (p) => p.product._id !== cartProduct.product._id
-    );
-    this.cartService.remove(cartProduct.product);
+  removeFromCart(cartProduct: OrderProduct) {
+    this.loading = true;
+    this.cartService.removeFromCart(cartProduct._id).subscribe(() => {
+      this.products = this.products.filter((p) => p._id !== cartProduct._id);
+      this.loading = false;
+    });
   }
 }

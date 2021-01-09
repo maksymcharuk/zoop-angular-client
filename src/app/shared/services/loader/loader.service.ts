@@ -1,15 +1,12 @@
 import { Injectable, ElementRef, ComponentRef } from '@angular/core';
 import { DOMService } from '../dom/dom.service';
-import { LoaderComponent } from '../../shared/components/loader/loader.component';
+import { LoaderComponent } from '../../components/loader/loader.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoaderService {
-
-  constructor(
-    private dom: DOMService
-  ) { }
+  constructor(private dom: DOMService) {}
 
   showLoader(container?: ElementRef, params?: any) {
     this.dom.appendComponent(LoaderComponent, params, container);
