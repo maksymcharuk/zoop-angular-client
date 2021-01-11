@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../../../../shared/services/authentication/authentication.service';
 import { AlertsService } from '../../../../shared/services/alerts/alerts.service';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -22,6 +23,7 @@ export class SignInComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private authService: AuthenticationService,
+    private cartService: CartService,
     private alertService: AlertsService
   ) {}
 
@@ -60,10 +62,11 @@ export class SignInComponent implements OnInit {
       })
       .subscribe(
         (res) => {
-          this.returnUrl
-            ? this.router.navigate([this.returnUrl])
-            : this.router.navigate(['customer-account']);
-          this.router.navigate(['customer-account']);
+          this.cartService.fullfillCartOnLogin().subscribe(() => {
+            this.returnUrl
+              ? this.router.navigate([this.returnUrl])
+              : this.router.navigate(['customer-account']);
+          });
         },
         (err) => {
           this.submitButton.nativeElement.removeAttribute('disabled');

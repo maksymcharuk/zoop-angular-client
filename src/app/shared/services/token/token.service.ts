@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { shareReplay, tap } from 'rxjs/operators';
 import * as moment from 'moment';
 import jwtDecode from 'jwt-decode';
@@ -12,6 +12,8 @@ import { LocalStorageService } from '../local-storage/local-storage.service';
   providedIn: 'root',
 })
 export class TokenService {
+  public userIsSiggnedIn$: Subject<boolean> = new Subject();
+
   private _currentUser;
 
   get currentUser() {
@@ -27,27 +29,39 @@ export class TokenService {
     email: string;
     password: string;
   }): Observable<AuthResponseDto> {
-    return this.http
-      .post<AuthResponseDto>('/auth/register', data)
-      .pipe(tap(this.setSession.bind(this)), shareReplay());
+    return this.http.post<AuthResponseDto>('/auth/register', data).pipe(
+      tap((authResult) => {
+        this.setSession(authResult);
+        this.userIsSiggnedIn$.next(true);
+      }),
+      shareReplay()
+    );
   }
 
   signIn(data: {
     email: string;
     password: string;
   }): Observable<AuthResponseDto> {
-    return this.http
-      .post<AuthResponseDto>(`/auth/login`, data)
-      .pipe(tap(this.setSession.bind(this)), shareReplay());
+    return this.http.post<AuthResponseDto>(`/auth/login`, data).pipe(
+      tap((authResult) => {
+        this.setSession(authResult);
+        this.userIsSiggnedIn$.next(true);
+      }),
+      shareReplay()
+    );
   }
 
   signInSeller(data: {
     email: string;
     password: string;
   }): Observable<AuthResponseDto> {
-    return this.http
-      .post<AuthResponseDto>(`/auth/login-seller`, data)
-      .pipe(tap(this.setSession.bind(this)), shareReplay());
+    return this.http.post<AuthResponseDto>(`/auth/login-seller`, data).pipe(
+      tap((authResult) => {
+        this.setSession(authResult);
+        this.userIsSiggnedIn$.next(true);
+      }),
+      shareReplay()
+    );
   }
 
   signOut() {
@@ -56,7 +70,7 @@ export class TokenService {
         this.localStorage.removeItem('token');
         this.localStorage.removeItem('exp');
         this.localStorage.removeItem('user');
-        this.localStorage.removeItem('cartProducts');
+        this.userIsSiggnedIn$.next(false);
       }),
       shareReplay()
     );

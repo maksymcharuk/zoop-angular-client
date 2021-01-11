@@ -5,7 +5,7 @@ import { Product } from '../../../../interfaces';
 import { OrderProduct, Cart } from '../../interfaces';
 
 import { ProductsService } from '../../../../shared/services/products/products.service';
-import { CartService } from './../../services/cart/cart.service';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-catalog',
@@ -56,7 +56,7 @@ export class CatalogComponent implements OnInit {
 
   removeFromCart(orderProduct: OrderProduct) {
     this.loading = true;
-    this.cartService.removeFromCart(orderProduct.product._id).subscribe(() => {
+    this.cartService.removeFromCart(orderProduct).subscribe(() => {
       this.loading = false;
     });
   }

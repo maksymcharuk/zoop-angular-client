@@ -25,8 +25,8 @@ export class CartComponent implements OnInit {
 
   removeFromCart(cartProduct: OrderProduct) {
     this.loading = true;
-    this.cartService.removeFromCart(cartProduct._id).subscribe(() => {
-      this.products = this.products.filter((p) => p._id !== cartProduct._id);
+
+    this.cartService.removeFromCart(cartProduct).subscribe(() => {
       this.loading = false;
     });
   }

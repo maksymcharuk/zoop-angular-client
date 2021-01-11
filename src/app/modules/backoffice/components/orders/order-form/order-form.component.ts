@@ -60,8 +60,6 @@ export class OrderFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.orderForm.value);
-
     if (!this.orderForm.valid) {
       return;
     }
