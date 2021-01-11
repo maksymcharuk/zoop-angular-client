@@ -10,6 +10,7 @@ import { CartService } from '../../services/cart/cart.service';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
+  public cart: Cart;
   public products: OrderProduct[];
   public loading = false;
 
@@ -18,7 +19,16 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.cartService.cart$.subscribe((cart: Cart) => {
+      this.cart = cart;
       this.products = cart.products;
+      this.loading = false;
+    });
+  }
+
+  addToCart(cartProduct: OrderProduct) {
+    this.loading = true;
+
+    this.cartService.addToCart(cartProduct).subscribe(() => {
       this.loading = false;
     });
   }

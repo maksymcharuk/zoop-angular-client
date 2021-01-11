@@ -40,12 +40,12 @@ export class CartService {
     });
   }
 
-  public addToCart(product: OrderProduct): Observable<Cart> {
+  public addToCart(orderProduct: OrderProduct): Observable<Cart> {
     return new Observable((subscriber) => {
       if (this.userService.isSignedIn()) {
         this.addToCartServer({
-          product: product.product._id,
-          quantity: product.quantity,
+          product: orderProduct.product._id,
+          quantity: orderProduct.quantity,
         }).subscribe((cart: Cart) => {
           this.localStorage.setItem(this.guestCartKey, cart);
           this.cart$.next(cart);
@@ -56,7 +56,7 @@ export class CartService {
         const cart = this.cart$.getValue();
         const products = cart.products;
 
-        this.upsert(products, product);
+        this.upsert(products, orderProduct);
 
         const newCart = { ...cart, products };
 
