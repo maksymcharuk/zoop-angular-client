@@ -13,6 +13,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { CartComponent } from './components/cart/cart.component';
+import { OrderComponent } from './components/order/order.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInSellerComponent } from './components/sign-in-seller/sign-in-seller.component';
@@ -24,6 +25,7 @@ import { SignInSellerComponent } from './components/sign-in-seller/sign-in-selle
     HomeComponent,
     CatalogComponent,
     CartComponent,
+    OrderComponent,
     SignInComponent,
     SignUpComponent,
     SignInSellerComponent,

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
-import { Product } from '../../../../interfaces';
 import { OrderProduct } from '../../interfaces/order-product.inteface';
 import { UpsertOrderProduct } from '../../interfaces/upsert-order-product.interface';
 import { Cart } from '../../interfaces/cart.interface';
 
 import { LocalStorageService } from '../../../../shared/services/local-storage/local-storage.service';
-import { UserService } from '../../../../shared/services/user/user.service';
 import { TokenService } from '../../../../shared/services/token/token.service';
+import { UserService } from '../../../../shared/services/user/user.service';
+import { OrderCalculationsService } from '../order-calculations/order-calculations.service';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +27,8 @@ export class CartService {
     private http: HttpClient,
     private localStorage: LocalStorageService,
     private tokenService: TokenService,
-    private userService: UserService
+    private userService: UserService,
+    private orderCalculationsService: OrderCalculationsService
   ) {
     this.getCart().subscribe((cart: Cart) => {
       this.cart$.next(cart);
@@ -43,10 +44,7 @@ export class CartService {
   public addToCart(orderProduct: OrderProduct): Observable<Cart> {
     return new Observable((subscriber) => {
       if (this.userService.isSignedIn()) {
-        this.addToCartServer({
-          product: orderProduct.product._id,
-          quantity: orderProduct.quantity,
-        }).subscribe((cart: Cart) => {
+        this.addToCartServer(orderProduct).subscribe((cart: Cart) => {
           this.localStorage.setItem(this.guestCartKey, cart);
           this.cart$.next(cart);
           subscriber.next(cart);
@@ -58,12 +56,15 @@ export class CartService {
 
         this.upsert(products, orderProduct);
 
-        const newCart = { ...cart, products };
-
-        this.localStorage.setItem(this.guestCartKey, cart);
-        this.cart$.next(newCart);
-        subscriber.next(newCart);
-        subscriber.complete();
+        this.orderCalculationsService
+          .getTotalPrice(products)
+          .subscribe((totalPrice) => {
+            const newCart: Cart = { ...cart, products, totalPrice };
+            this.localStorage.setItem(this.guestCartKey, newCart);
+            this.cart$.next(newCart);
+            subscriber.next(newCart);
+            subscriber.complete();
+          });
       }
     });
   }
@@ -71,12 +72,14 @@ export class CartService {
   public removeFromCart(orderProduct: OrderProduct): Observable<Cart> {
     return new Observable((subscriber) => {
       if (this.userService.isSignedIn()) {
-        this.removeFromCartServer(orderProduct._id).subscribe((cart: Cart) => {
-          this.localStorage.setItem(this.guestCartKey, cart);
-          this.cart$.next(cart);
-          subscriber.next(cart);
-          subscriber.complete();
-        });
+        this.removeFromCartServer(orderProduct.product._id).subscribe(
+          (cart: Cart) => {
+            this.localStorage.setItem(this.guestCartKey, cart);
+            this.cart$.next(cart);
+            subscriber.next(cart);
+            subscriber.complete();
+          }
+        );
       } else {
         const cart = this.cart$.getValue();
         const products = cart.products.filter(
@@ -115,12 +118,8 @@ export class CartService {
     const guestCart = this.localStorage.getItem(this.guestCartKey);
 
     return new Observable((subscriber) => {
-      if (guestCart && guestCart.products) {
-        const products: UpsertOrderProduct[] = guestCart.products.map((p) => ({
-          product: p.product._id,
-          quantity: p.quantity,
-        }));
-        return this.http.put('/cart', products).subscribe((cart: Cart) => {
+      if (guestCart) {
+        return this.http.put('/cart', guestCart).subscribe((cart: Cart) => {
           this.localStorage.removeItem(this.guestCartKey);
           this.cart$.next(cart);
           subscriber.next(cart);
@@ -133,7 +132,7 @@ export class CartService {
     });
   }
 
-  private addToCartServer(orderProduct: UpsertOrderProduct) {
+  private addToCartServer(orderProduct: OrderProduct) {
     return this.http.post('/cart', orderProduct);
   }
 
