@@ -8,6 +8,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductCreateComponent } from './components/products/product-create/product-create.component';
 import { ProductEditComponent } from './components/products/product-edit/product-edit.component';
+import { AbstractProductsComponent } from './components/abstract-products/abstract-products.component';
+import { AbstractProductCreateComponent } from './components/abstract-products/abstract-product-create/abstract-product-create.component';
+import { AbstractProductEditComponent } from './components/abstract-products/abstract-product-edit/abstract-product-edit.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { CategoryCreateComponent } from './components/categories/category-create/category-create.component';
 import { CategoryEditComponent } from './components/categories/category-edit/category-edit.component';
@@ -29,6 +32,15 @@ const routes: Routes = [
       { path: 'products', component: ProductsComponent },
       { path: 'products/create', component: ProductCreateComponent },
       { path: 'products/edit/:id', component: ProductEditComponent },
+      { path: 'abstract-products', component: AbstractProductsComponent },
+      {
+        path: 'abstract-products/create',
+        component: AbstractProductCreateComponent,
+      },
+      {
+        path: 'abstract-products/edit/:id',
+        component: AbstractProductEditComponent,
+      },
       { path: 'categories', component: CategoriesComponent },
       { path: 'categories/create', component: CategoryCreateComponent },
       { path: 'categories/edit/:id', component: CategoryEditComponent },

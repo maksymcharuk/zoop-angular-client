@@ -1,0 +1,36 @@
+<div class="products">
+
+  <div class="products__inner" *ngIf="abstractProducts; else loading">
+    <div *ngIf="abstractProducts.length > 0; then productsList else firstProduct"></div>
+
+    <ng-template #productsList>
+      <div class="products__title">
+        <h4>Products</h4>
+      </div>
+
+      <ul class="products__list">
+        <li class="products__list-item" *ngFor="let abstractProduct of abstractProducts">
+          <span class="products__list-item-img"></span>
+          <span class="products__list-item-name">{{ abstractProduct.name }} - ${{ abstractProduct.price }}</span>
+          <button class="btn btn-secondary products__list-item-button" [routerLink]="['edit', abstractProduct._id]">Edit</button>
+          <button class="btn btn-danger products__list-item-button" (click)="deleteProduct(abstractProduct._id)">Delete</button>
+        </li>
+      </ul>
+
+      <a class="products__add-new" [routerLink]="['create']">Add new Product</a>
+    </ng-template>
+
+    <ng-template #firstProduct>
+      <div class="products__title">
+        <h4>You have no products yet</h4>
+      </div>
+
+      <a class="products__add-new" [routerLink]="['create']">Add new Product</a>
+    </ng-template>
+  </div>
+
+  <ng-template #loading>
+    <app-loader></app-loader>
+  </ng-template>
+
+</div>

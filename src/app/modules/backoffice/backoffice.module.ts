@@ -11,6 +11,10 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { BackofficeComponent } from './backoffice.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AbstractProductsComponent } from './components/abstract-products/abstract-products.component';
+import { AbstractProductCreateComponent } from './components/abstract-products/abstract-product-create/abstract-product-create.component';
+import { AbstractProductEditComponent } from './components/abstract-products/abstract-product-edit/abstract-product-edit.component';
+import { AbstractProductFormComponent } from './components/abstract-products/abstract-product-form/abstract-product-form.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductCreateComponent } from './components/products/product-create/product-create.component';
 import { ProductEditComponent } from './components/products/product-edit/product-edit.component';
@@ -31,6 +35,10 @@ import { AccountComponent } from './components/account/account.component';
   declarations: [
     BackofficeComponent,
     DashboardComponent,
+    AbstractProductsComponent,
+    AbstractProductCreateComponent,
+    AbstractProductEditComponent,
+    AbstractProductFormComponent,
     ProductsComponent,
     ProductCreateComponent,
     ProductEditComponent,

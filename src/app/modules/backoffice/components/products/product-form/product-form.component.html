@@ -16,9 +16,9 @@
     <input formControlName="description" type="text" id="inputDescription" class="form-control" placeholder="Description">
   </div>
   <div class="product-form__input-group">
-    <label for="inputCategory">Category</label>
-    <select formControlName="category" class="form-control" id="inputCategory">
-      <option *ngFor="let category of categories$ | async" [value]="category._id">{{ category.name }}</option>
+    <label for="inputCategory">Abstract Product</label>
+    <select formControlName="abstractProduct" class="form-control" id="inputCategory">
+      <option *ngFor="let abstractProduct of abstractProducts$ | async" [value]="abstractProduct._id">{{ abstractProduct.name }}</option>
     </select>
   </div>
   <div class="product-form__input-group">

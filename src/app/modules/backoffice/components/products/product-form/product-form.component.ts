@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Status } from './../../../enums';
-import { CategoriesService } from './../../../services/categories/categories.service';
+import { AbstractProductsService } from './../../../services/abstract-products/abstract-products.service';
 
 @Component({
   selector: 'app-product-form',
@@ -15,20 +15,21 @@ export class ProductFormComponent implements OnInit {
   @Output() save: EventEmitter<any> = new EventEmitter();
 
   public productForm: FormGroup;
-  public categories$ = this.categoriesService.getCategories();
+  public abstractProducts$ = this.abstractProductsService.getAll();
 
   constructor(
     private fb: FormBuilder,
-    private categoriesService: CategoriesService
+    private abstractProductsService: AbstractProductsService
   ) {}
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
+      code: ['', Validators.required],
       name: ['', Validators.required],
       price: ['', Validators.required],
       shortDescription: [''],
       description: [''],
-      category: [''],
+      abstractProduct: [''],
       imageUrl: [''],
       stringId: [''],
       color: [''],
@@ -43,7 +44,9 @@ export class ProductFormComponent implements OnInit {
       this.productForm
         .get('status')
         .patchValue(this.product.status === Status.Active);
-      this.productForm.get('category').patchValue(this.product.category._id);
+      this.productForm
+        .get('abstractProduct')
+        .patchValue(this.product.abstractProduct._id);
     }
   }
 
@@ -53,11 +56,12 @@ export class ProductFormComponent implements OnInit {
     }
 
     this.save.emit({
+      code: this.productForm.get('code').value,
       name: this.productForm.get('name').value,
       price: this.productForm.get('price').value,
       shortDescription: this.productForm.get('shortDescription').value,
       description: this.productForm.get('description').value,
-      category: this.productForm.get('category').value,
+      abstractProduct: this.productForm.get('abstractProduct').value,
       imageUrl: this.productForm.get('imageUrl').value,
       stringId: this.productForm.get('stringId').value,
       color: this.productForm.get('color').value,
