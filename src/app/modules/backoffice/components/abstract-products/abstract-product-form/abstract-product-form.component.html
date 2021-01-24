@@ -6,6 +6,7 @@
   <div class="product-form__input-group">
     <label for="inputCategory">Category</label>
     <select formControlName="category" class="form-control" id="inputCategory">
+      <option value="" disabled selected>Select category option</option>
       <option *ngFor="let category of categories$ | async" [value]="category._id">{{ category.name }}</option>
     </select>
   </div>

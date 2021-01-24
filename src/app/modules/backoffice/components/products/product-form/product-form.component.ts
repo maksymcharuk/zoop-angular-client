@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Status } from './../../../enums';
 import { AbstractProductsService } from './../../../services/abstract-products/abstract-products.service';
+import { AlertsService } from './../../../../../shared/services/alerts/alerts.service';
 
 @Component({
   selector: 'app-product-form',
@@ -19,7 +20,8 @@ export class ProductFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private abstractProductsService: AbstractProductsService
+    private abstractProductsService: AbstractProductsService,
+    private alertsService: AlertsService
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +31,7 @@ export class ProductFormComponent implements OnInit {
       price: ['', Validators.required],
       shortDescription: [''],
       description: [''],
-      abstractProduct: [''],
+      abstractProduct: ['', Validators.required],
       imageUrl: [''],
       stringId: [''],
       color: [''],
@@ -52,6 +54,7 @@ export class ProductFormComponent implements OnInit {
 
   onSubmit() {
     if (!this.productForm.valid) {
+      this.alertsService.showAlertDanger('Some required fields are missing');
       return;
     }
 
