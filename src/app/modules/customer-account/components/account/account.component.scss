@@ -1,0 +1,19 @@
+$namespace: '.account';
+
+#{$namespace} {
+
+  #{$namespace}__form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+
+  #{$namespace}__input-group {
+    flex: 1 1 auto;
+    margin-bottom: 10px;
+  }
+
+  #{$namespace}__button {
+
+  }
+}

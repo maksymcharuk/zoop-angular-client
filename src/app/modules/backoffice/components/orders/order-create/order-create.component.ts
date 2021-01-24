@@ -5,7 +5,7 @@ import { OrdersService } from '../../../services/orders/orders.service';
 import { GoogleAnalyticsService } from '../../../../../shared/services/google-analytics/google-analytics.service';
 
 @Component({
-  selector: 'app-order-create',
+  selector: 'backoffice-order-create',
   templateUrl: './order-create.component.html',
   styleUrls: ['./order-create.component.scss'],
 })

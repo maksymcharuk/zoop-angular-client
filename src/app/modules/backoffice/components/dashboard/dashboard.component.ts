@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-
 @Component({
-  selector: 'app-dashboard',
+  selector: 'backoffice-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })

@@ -6,7 +6,7 @@ import { OrdersService } from '../../services/orders/orders.service';
 import { AlertsService } from '../../../../shared/services/alerts/alerts.service';
 
 @Component({
-  selector: 'app-orders',
+  selector: 'backoffice-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss'],
 })

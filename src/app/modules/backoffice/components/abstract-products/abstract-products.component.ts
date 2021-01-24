@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractProductsService } from './../../services/abstract-products/abstract-products.service';
 
 @Component({
-  selector: 'app-abstract-products',
+  selector: 'backoffice-abstract-products',
   templateUrl: './abstract-products.component.html',
   styleUrls: ['./abstract-products.component.scss'],
 })

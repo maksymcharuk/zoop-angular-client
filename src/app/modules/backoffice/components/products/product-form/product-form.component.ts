@@ -6,7 +6,7 @@ import { AbstractProductsService } from './../../../services/abstract-products/a
 import { AlertsService } from './../../../../../shared/services/alerts/alerts.service';
 
 @Component({
-  selector: 'app-product-form',
+  selector: 'backoffice-product-form',
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss'],
 })

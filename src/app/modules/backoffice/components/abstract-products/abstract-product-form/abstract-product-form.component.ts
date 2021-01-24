@@ -5,7 +5,7 @@ import { Status } from '../../../enums';
 import { CategoriesService } from '../../../services/categories/categories.service';
 
 @Component({
-  selector: 'app-abstract-product-form',
+  selector: 'backoffice-abstract-product-form',
   templateUrl: './abstract-product-form.component.html',
   styleUrls: ['./abstract-product-form.component.scss'],
 })

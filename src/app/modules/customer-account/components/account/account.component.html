@@ -1,0 +1,45 @@
+<div class="account">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Account</h1>
+  </div>
+
+  <form class="account__form" [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+    <div class="account__input-group">
+      <label for="inputEmail">Email</label>
+      <input formControlName="email" type="text" id="inputEmail" class="form-control" placeholder="Email" readonly>
+    </div>
+    <div class="account__input-group">
+      <label for="inputFirstName">First Name</label>
+      <input formControlName="firstName" type="text" id="inputFirstName" class="form-control" placeholder="First Name">
+    </div>
+    <div class="account__input-group">
+      <label for="inputLastName">Last Name</label>
+      <input formControlName="lastName" type="text" id="inputLastName" class="form-control" placeholder="Last Name">
+    </div>
+    <div class="account__input-group">
+      <label for="inputPhoneNumber">Phone Number</label>
+      <input formControlName="phoneNumber" type="text" id="inputPhoneNumber" class="form-control" placeholder="Phone Number">
+    </div>
+    <div formGroupName="address">
+      <div class="account__input-group">
+        <label for="inputAddr1">Address</label>
+        <input formControlName="addr1" type="text" id="inputAddr1" class="form-control" placeholder="Address">
+      </div>
+      <div class="account__input-group">
+        <label for="inputCity">City</label>
+        <input formControlName="city" type="text" id="inputCity" class="form-control" placeholder="City">
+      </div>
+      <div class="account__input-group">
+        <label for="inputState">State</label>
+        <input formControlName="state" type="text" id="inputState" class="form-control" placeholder="State">
+      </div>
+      <div class="account__input-group">
+        <label for="inputCountry">Country</label>
+        <input formControlName="country" type="text" id="inputCountry" class="form-control" placeholder="Country">
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+
+  <app-loader *ngIf="loading"></app-loader>
+</div>

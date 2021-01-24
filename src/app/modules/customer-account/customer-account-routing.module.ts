@@ -5,6 +5,7 @@ import { AuthenticationGuard } from '../../guards/authentication/authentication.
 
 import { CustomerAccountComponent } from './customer-account.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AccountComponent } from './components/account/account.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
+      { path: 'account', component: AccountComponent },
     ],
   },
 ];

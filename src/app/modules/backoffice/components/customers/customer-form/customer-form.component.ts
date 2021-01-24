@@ -2,28 +2,25 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-customer-form',
+  selector: 'backoffice-customer-form',
   templateUrl: './customer-form.component.html',
-  styleUrls: ['./customer-form.component.scss']
+  styleUrls: ['./customer-form.component.scss'],
 })
 export class CustomerFormComponent implements OnInit {
-
   @Input() customer;
 
   @Output() save: EventEmitter<any> = new EventEmitter();
 
   public customerForm: FormGroup;
 
-  constructor(
-    private fb: FormBuilder
-  ) { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.customerForm = this.fb.group({
-      name: ['', Validators.required]
+      name: ['', Validators.required],
     });
 
-    if (this.customer){
+    if (this.customer) {
       this.customerForm.patchValue(this.customer);
     }
   }
@@ -33,10 +30,12 @@ export class CustomerFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.customerForm.valid) { return; }
+    if (!this.customerForm.valid) {
+      return;
+    }
 
     this.save.emit({
-      name: this.nameCtrl.value
+      name: this.nameCtrl.value,
     });
   }
 }

@@ -6,7 +6,7 @@ import { CustomersService } from '../../../services/customers/customers.service'
 import { ProductsService } from '../../../../../shared/services/products/products.service';
 
 @Component({
-  selector: 'app-order-form',
+  selector: 'backoffice-order-form',
   templateUrl: './order-form.component.html',
   styleUrls: ['./order-form.component.scss'],
 })

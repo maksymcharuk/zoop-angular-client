@@ -7,7 +7,7 @@ import { AlertsService } from '../../../../../shared/services/alerts/alerts.serv
 import { CategoriesService } from '../../../services/categories/categories.service';
 
 @Component({
-  selector: 'app-category-edit',
+  selector: 'backoffice-category-edit',
   templateUrl: './category-edit.component.html',
   styleUrls: ['./category-edit.component.scss'],
 })

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 import { AlertsService } from '../../../../shared/services/alerts/alerts.service';
 
 @Component({
-  selector: 'app-account',
+  selector: 'backoffice-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],
 })

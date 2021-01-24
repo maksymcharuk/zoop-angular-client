@@ -3,10 +3,10 @@
 
   <div class="product-edit__inner" *ngIf="abstractProduct$ | async as abstractProduct; else loading">
     <h1 class="h3 mb-3 font-weight-normal">Edit abstract product</h1>
-    <app-abstract-product-form
+    <backoffice-abstract-product-form
       [abstractProduct]="abstractProduct"
       (save)="onSubmit($event)">
-    </app-abstract-product-form>
+    </backoffice-abstract-product-form>
   </div>
 
   <ng-template #loading>

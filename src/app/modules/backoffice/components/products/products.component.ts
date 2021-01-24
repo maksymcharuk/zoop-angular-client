@@ -5,7 +5,7 @@ import { AlertsService } from '../../../../shared/services/alerts/alerts.service
 import { ProductsService } from '../../services/products/products.service';
 
 @Component({
-  selector: 'app-products',
+  selector: 'backoffice-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })

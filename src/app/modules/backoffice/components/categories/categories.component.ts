@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../../services/categories/categories.service';
 
 @Component({
-  selector: 'app-categories',
+  selector: 'backoffice-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss'],
 })

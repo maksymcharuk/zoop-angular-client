@@ -7,7 +7,7 @@ import { Category } from '../../../interfaces';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-category-form',
+  selector: 'backoffice-category-form',
   templateUrl: './category-form.component.html',
   styleUrls: ['./category-form.component.scss'],
 })

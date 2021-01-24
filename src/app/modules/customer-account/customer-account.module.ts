@@ -11,9 +11,14 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { CustomerAccountComponent } from './customer-account.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
-  declarations: [CustomerAccountComponent, DashboardComponent],
+  declarations: [
+    CustomerAccountComponent,
+    DashboardComponent,
+    AccountComponent,
+  ],
   imports: [
     BrowserModule,
     CustomerAccountRoutingModule,
