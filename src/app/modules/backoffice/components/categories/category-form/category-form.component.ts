@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { Status } from './../../../enums';
+import { Status } from '../../../../../enums';
 import { CategoriesService } from '../../../services/categories/categories.service';
 import { Category } from '../../../interfaces';
 import { map } from 'rxjs/operators';

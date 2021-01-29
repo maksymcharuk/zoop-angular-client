@@ -2,27 +2,31 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { LocalStorageService } from '../../../../shared/services/local-storage/local-storage.service';
+import { Order } from '../../../../interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrdersService {
-  private accountId: number = parseInt(this.localStorage.getItem('accountId'));
+  constructor(private http: HttpClient) {}
 
-  constructor(
-    private http: HttpClient,
-    private localStorage: LocalStorageService
-  ) {}
-
-  getOrders(shopId: number): Observable<any> {
-    return this.http.get(`/accounts/${this.accountId}/shops/${shopId}/orders`);
+  getOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>('/backoffice/orders');
   }
 
-  createOrder(shopId: number, data: any): Observable<any> {
-    return this.http.post(
-      `/accounts/${this.accountId}/shops/${shopId}/orders`,
-      data
-    );
+  getOrderById(id: string): Observable<Order> {
+    return this.http.get<Order>(`/backoffice/orders/${id}`);
+  }
+
+  createOrder(data: any) {
+    return this.http.post<Order>('/backoffice/orders', data);
+  }
+
+  updateOrder(id: string, data: any) {
+    return this.http.put<Order>(`/backoffice/orders/${id}`, data);
+  }
+
+  removeOrder(id: string) {
+    return this.http.delete<Order>(`/backoffice/orders/${id}`);
   }
 }

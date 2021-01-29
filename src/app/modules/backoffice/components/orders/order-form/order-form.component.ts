@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { CustomersService } from '../../../services/customers/customers.service';
-import { ProductsService } from '../../../../../shared/services/products/products.service';
+
+import { OrderProduct } from '../../../../../interfaces';
+import { AlertsService } from '../../../../../shared/services/alerts/alerts.service';
+import { OrdersService } from '../../../services/orders/orders.service';
 
 @Component({
   selector: 'backoffice-order-form',
@@ -16,30 +16,35 @@ export class OrderFormComponent implements OnInit {
   @Output() save: EventEmitter<any> = new EventEmitter();
 
   public orderForm: FormGroup;
-  public customers$: Observable<any> = this.customersService.getCustomers();
-  public products$: BehaviorSubject<any> = new BehaviorSubject([]);
+  public deliveryTypes = [
+    { label: 'Pickup', value: 'pickup' },
+    { label: 'Nova Poshta', value: 'novaposhta' },
+  ];
 
-  private shopId: number;
+  public products: OrderProduct[];
+  public loading = true;
 
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private customersService: CustomersService,
-    private productsService: ProductsService
+    private alertsService: AlertsService,
+    private orderService: OrdersService
   ) {}
 
   ngOnInit(): void {
-    this.route.parent.params.subscribe((params) => {
-      this.shopId = +params.id;
-      this.productsService.getProducts().subscribe((data) => {
-        this.products$.next(data);
-      });
-    });
-
     this.orderForm = this.fb.group({
-      status: ['', Validators.required],
-      customerId: ['', Validators.required],
-      products: [[], Validators.required],
+      recieverDetails: this.fb.group({
+        firstName: ['', [Validators.required]],
+        lastName: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        phone: ['', [Validators.required]],
+      }),
+      deliveryDetails: this.fb.group({
+        type: [this.deliveryTypes[0].value, [Validators.required]],
+        address: '',
+        city: '',
+        state: '',
+        details: '',
+      }),
     });
 
     if (this.order) {
@@ -47,27 +52,24 @@ export class OrderFormComponent implements OnInit {
     }
   }
 
-  get statusCtrl() {
-    return this.orderForm.get('status');
-  }
-
-  get customerIdCtrl() {
-    return this.orderForm.get('customerId');
-  }
-
-  get productsCtrl() {
-    return this.orderForm.get('products');
-  }
-
   onSubmit() {
     if (!this.orderForm.valid) {
+      this.alertsService.showAlertDanger('Some required fields are missing');
       return;
     }
 
-    this.save.emit({
-      status: this.statusCtrl.value,
-      customerId: this.customerIdCtrl.value,
-      products: this.productsCtrl.value.join(','),
+    this.loading = true;
+
+    const order = {
+      ...this.orderForm.value,
+      products: this.products.map((p) => ({
+        product: p.product._id,
+        quantity: p.quantity,
+      })),
+    };
+
+    this.orderService.createOrder(order).subscribe(() => {
+      this.loading = false;
     });
   }
 }

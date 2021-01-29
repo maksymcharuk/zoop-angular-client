@@ -1,11 +1,8 @@
 $namespace: '.order-form';
 
 #{$namespace} {
-  display: flex;
-  flex-direction: column;
 
   #{$namespace}__input-group {
-    flex: 1 1 auto;
     margin-bottom: 10px;
   }
 

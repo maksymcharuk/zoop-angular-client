@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { Status } from './../../../enums';
+import { Status } from '../../../../../enums';
 import { AbstractProductsService } from './../../../services/abstract-products/abstract-products.service';
 import { AlertsService } from './../../../../../shared/services/alerts/alerts.service';
 

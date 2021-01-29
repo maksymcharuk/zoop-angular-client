@@ -1,33 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
+
 import { AlertsService } from '../../../../../shared/services/alerts/alerts.service';
-import { ProductsService } from '../../../services/products/products.service';
+import { OrdersService } from '../../../services/orders/orders.service';
 
 @Component({
-  selector: 'backoffice-product-edit',
-  templateUrl: './product-edit.component.html',
-  styleUrls: ['./product-edit.component.scss'],
+  selector: 'backoffice-order-edit',
+  templateUrl: './order-edit.component.html',
+  styleUrls: ['./order-edit.component.scss'],
 })
-export class ProductEditComponent implements OnInit {
-  private productId: string;
+export class OrderEditComponent implements OnInit {
+  private orderId: string;
 
-  public product$: any = new Subject();
+  public order$: any = new Subject();
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private alertService: AlertsService,
-    private productsService: ProductsService
+    private ordersService: OrdersService
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.productId = params.id;
+      this.orderId = params.id;
 
-      this.productsService.getProductById(this.productId).subscribe(
+      this.ordersService.getOrderById(this.orderId).subscribe(
         (res: any) => {
-          this.product$.next(res);
+          this.order$.next(res);
         },
         (err) => {
           this.alertService.showAlertDanger(err.message);
@@ -37,9 +38,9 @@ export class ProductEditComponent implements OnInit {
   }
 
   onSubmit(data) {
-    this.productsService.updateProduct(this.productId, data).subscribe(
+    this.ordersService.updateOrder(this.orderId, data).subscribe(
       (res) => {
-        this.router.navigate(['backoffice', 'products']);
+        this.router.navigate(['backoffice', 'orders']);
       },
       (err) => {
         this.alertService.showAlertDanger(err.message);

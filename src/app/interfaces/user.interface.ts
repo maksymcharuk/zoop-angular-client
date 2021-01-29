@@ -1,6 +1,7 @@
 export interface User {
-  _id: string;
+  readonly _id: string;
   seller: boolean;
   email: string;
-  created: Date;
+  updatedAt: Date;
+  createdAt: Date;
 }

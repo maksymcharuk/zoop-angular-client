@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 import { AlertsService } from '../../../../shared/services/alerts/alerts.service';
 import { ProductsService } from '../../services/products/products.service';
@@ -12,10 +11,7 @@ import { ProductsService } from '../../services/products/products.service';
 export class ProductsComponent implements OnInit {
   public products: any[];
 
-  constructor(
-    private route: ActivatedRoute,
-    private productsService: ProductsService
-  ) {}
+  constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((products) => {

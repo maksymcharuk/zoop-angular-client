@@ -1,4 +1,4 @@
-import { Status } from '../enums';
+import { Status } from '../../../enums';
 
 export interface Category {
   readonly _id: string;

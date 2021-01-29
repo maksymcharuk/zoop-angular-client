@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cart } from '../../interfaces/cart.interface';
 import { OrderProduct } from '../../interfaces/order-product.inteface';
 import { CartService } from '../../services/cart/cart.service';
-import { OrderService } from '../../services/order/order.service';
+import { OrdersService } from '../../services/orders/orders.service';
 
 @Component({
   selector: 'app-order',
@@ -20,16 +20,15 @@ export class OrderComponent implements OnInit {
 
   public cart: Cart;
   public products: OrderProduct[];
-  public loading = false;
+  public loading = true;
 
   constructor(
     private fb: FormBuilder,
     private cartService: CartService,
-    private orderService: OrderService
+    private ordersService: OrdersService
   ) {}
 
   ngOnInit(): void {
-    this.loading = true;
     this.cartService.cart$.subscribe((cart: Cart) => {
       this.cart = cart;
       this.products = cart.products;
@@ -64,7 +63,7 @@ export class OrderComponent implements OnInit {
       })),
     };
 
-    this.orderService.create(order).subscribe(() => {
+    this.ordersService.create(order).subscribe(() => {
       this.loading = false;
     });
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { Status } from '../../../enums';
+import { Status } from '../../../../../enums';
 import { CategoriesService } from '../../../services/categories/categories.service';
 
 @Component({
@@ -47,7 +47,7 @@ export class AbstractProductFormComponent implements OnInit {
 
     this.save.emit({
       name: this.abstractProductForm.get('name').value,
-      abstractProduct: this.abstractProductForm.get('abstractProduct').value,
+      category: this.abstractProductForm.get('category').value,
       status: this.abstractProductForm.get('status').value
         ? Status.Active
         : Status.Inactive,
