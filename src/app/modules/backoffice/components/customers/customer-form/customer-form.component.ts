@@ -1,5 +1,10 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'backoffice-customer-form',
@@ -25,11 +30,11 @@ export class CustomerFormComponent implements OnInit {
     }
   }
 
-  get nameCtrl() {
+  get nameCtrl(): AbstractControl {
     return this.customerForm.get('name');
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (!this.customerForm.valid) {
       return;
     }

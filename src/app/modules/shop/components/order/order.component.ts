@@ -52,7 +52,7 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.loading = true;
 
     const order = {

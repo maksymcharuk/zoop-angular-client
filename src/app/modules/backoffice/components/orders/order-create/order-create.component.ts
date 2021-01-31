@@ -18,7 +18,7 @@ export class OrderCreateComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(data) {
+  onSubmit(data): void {
     this.ordersService.createOrder(data).subscribe(
       (res) => {
         this.router.navigate(['backoffice', 'orders']);

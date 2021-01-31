@@ -56,7 +56,7 @@ export class CatalogComponent implements OnInit {
     //   });
   }
 
-  addToCart(product: Product) {
+  addToCart(product: Product): void {
     this.loading = true;
     const orderProduct: OrderProduct = { product, quantity: 1 };
     this.cartService.addToCart(orderProduct).subscribe(() => {
@@ -64,7 +64,7 @@ export class CatalogComponent implements OnInit {
     });
   }
 
-  removeFromCart(product: Product) {
+  removeFromCart(product: Product): void {
     this.loading = true;
     const orderProduct: OrderProduct = { product, quantity: 1 };
     this.cartService.removeFromCart(orderProduct).subscribe(() => {

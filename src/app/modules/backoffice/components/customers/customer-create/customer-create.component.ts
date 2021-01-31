@@ -24,7 +24,7 @@ export class CustomerCreateComponent implements OnInit {
     });
   }
 
-  onSubmit(data) {
+  onSubmit(data): void {
     this.customersService
       .createCustomer({
         name: data.name,

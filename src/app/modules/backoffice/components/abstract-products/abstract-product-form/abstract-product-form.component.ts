@@ -40,7 +40,7 @@ export class AbstractProductFormComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (!this.abstractProductForm.valid) {
       return;
     }

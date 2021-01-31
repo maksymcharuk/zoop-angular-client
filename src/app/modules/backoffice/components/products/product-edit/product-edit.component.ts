@@ -36,7 +36,7 @@ export class ProductEditComponent implements OnInit {
     });
   }
 
-  onSubmit(data) {
+  onSubmit(data): void {
     this.productsService.updateProduct(this.productId, data).subscribe(
       (res) => {
         this.router.navigate(['backoffice', 'products']);

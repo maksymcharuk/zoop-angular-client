@@ -1,5 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -37,15 +42,15 @@ export class SignInSellerComponent implements OnInit {
     });
   }
 
-  get emailCtrl() {
+  get emailCtrl(): AbstractControl {
     return this.signInForm.get('email');
   }
 
-  get passwordCtrl() {
+  get passwordCtrl(): AbstractControl {
     return this.signInForm.get('password');
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.signInForm.invalid) {
       this.emailCtrl.markAsTouched();
       this.passwordCtrl.markAsTouched();

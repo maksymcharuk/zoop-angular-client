@@ -51,7 +51,7 @@ export class CategoryFormComponent implements OnInit {
       });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (!this.categoryForm.valid) {
       return;
     }
@@ -68,8 +68,8 @@ export class CategoryFormComponent implements OnInit {
     );
   }
 
-  clean(obj) {
-    for (var propName in obj) {
+  clean(obj: {}): {} {
+    for (const propName in obj) {
       if (!obj[propName]) {
         delete obj[propName];
       }

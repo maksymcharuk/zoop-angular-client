@@ -19,7 +19,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  deleteProduct(id: string) {
+  deleteProduct(id: string): void {
     this.productsService.removeProduct(id).subscribe(() => {
       this.products = this.products.filter((product) => product._id !== id);
     });

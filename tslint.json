@@ -1,5 +1,8 @@
 {
-  "extends": "tslint:recommended",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier"
+  ],
   "rules": {
     "align": {
       "options": [
@@ -20,12 +23,14 @@
       true,
       "attribute",
       "app",
+      "backoffice",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
       "app",
+      "backoffice",
       "kebab-case"
     ],
     "eofline": true,
@@ -120,7 +125,8 @@
       "options": [
         "ban-keywords",
         "check-format",
-        "allow-pascal-case"
+        "allow-pascal-case",
+        "allow-leading-underscore"
       ]
     },
     "whitespace": {

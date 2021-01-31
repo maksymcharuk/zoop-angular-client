@@ -5,6 +5,7 @@ import {
   Validators,
   ValidationErrors,
   NgForm,
+  AbstractControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -36,19 +37,19 @@ export class SignUpComponent implements OnInit {
         password: ['', Validators.required],
         confirmPassword: ['', Validators.required],
       },
-      { validator: this.passwordValidator }
+      { validators: [this.passwordValidator] }
     );
   }
 
-  get emailCtrl() {
+  get emailCtrl(): AbstractControl {
     return this.signUpForm.get('email');
   }
 
-  get passwordCtrl() {
+  get passwordCtrl(): AbstractControl {
     return this.signUpForm.get('password');
   }
 
-  get confirmPasswordCtrl() {
+  get confirmPasswordCtrl(): AbstractControl {
     return this.signUpForm.get('confirmPassword');
   }
 
@@ -62,7 +63,7 @@ export class SignUpComponent implements OnInit {
         };
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.signUpForm.invalid) {
       this.emailCtrl.markAsTouched();
       this.passwordCtrl.markAsTouched();

@@ -20,18 +20,18 @@ export class AbstractProductsService {
     return this.http.get<Product>(`${this.baseUrl}/abstract-products/${id}`);
   }
 
-  create(data: any) {
+  create(data: any): Observable<Product> {
     return this.http.post<Product>(`${this.baseUrl}/abstract-products`, data);
   }
 
-  update(id: string, data: any) {
+  update(id: string, data: any): Observable<Product> {
     return this.http.put<Product>(
       `${this.baseUrl}/abstract-products/${id}`,
       data
     );
   }
 
-  remove(id: string) {
+  remove(id: string): Observable<Product> {
     return this.http.delete<Product>(`${this.baseUrl}/abstract-products/${id}`);
   }
 }

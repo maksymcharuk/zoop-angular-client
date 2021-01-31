@@ -18,15 +18,15 @@ export class OrdersService {
     return this.http.get<Order>(`/backoffice/orders/${id}`);
   }
 
-  createOrder(data: any) {
+  createOrder(data: any): Observable<Order> {
     return this.http.post<Order>('/backoffice/orders', data);
   }
 
-  updateOrder(id: string, data: any) {
+  updateOrder(id: string, data: any): Observable<Order> {
     return this.http.put<Order>(`/backoffice/orders/${id}`, data);
   }
 
-  removeOrder(id: string) {
+  removeOrder(id: string): Observable<Order> {
     return this.http.delete<Order>(`/backoffice/orders/${id}`);
   }
 }

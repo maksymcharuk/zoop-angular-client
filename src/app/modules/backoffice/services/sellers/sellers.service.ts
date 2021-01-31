@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class SellersService {
   constructor(private http: HttpClient) {}
 
-  invite(data: { email: string; name?: string }) {
-    return this.http.post('/sellers/invite', data);
-  }
+  // invite(data: { email: string; name?: string }) {
+  //   return this.http.post('/sellers/invite', data);
+  // }
 }

@@ -38,7 +38,7 @@ export class CategoryEditComponent implements OnInit {
     });
   }
 
-  onSubmit(data) {
+  onSubmit(data): void {
     this.categoriesService.updateCategory(this.categoryId, data).subscribe(
       (res) => {
         this.router.navigate(['backoffice', 'categories']);

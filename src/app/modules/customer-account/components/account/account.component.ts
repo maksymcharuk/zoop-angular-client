@@ -39,7 +39,7 @@ export class AccountComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.loading = true;
     this.accountService.updateAccount(this.accountForm.value).subscribe(() => {
       this.loading = false;

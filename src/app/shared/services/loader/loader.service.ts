@@ -8,11 +8,11 @@ import { LoaderComponent } from '../../components/loader/loader.component';
 export class LoaderService {
   constructor(private dom: DOMService) {}
 
-  showLoader(container?: ElementRef, params?: any) {
+  showLoader(container?: ElementRef, params?: any): void {
     this.dom.appendComponent(LoaderComponent, params, container);
   }
 
-  hideLoader(loader: ComponentRef<LoaderComponent>) {
+  hideLoader(loader: ComponentRef<LoaderComponent>): void {
     this.dom.removeComponent(loader);
   }
 }

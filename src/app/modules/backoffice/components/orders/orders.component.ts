@@ -19,7 +19,7 @@ export class OrdersComponent implements OnInit {
     });
   }
 
-  deleteProduct(id: string) {
+  deleteProduct(id: string): void {
     this.ordersService.removeOrder(id).subscribe(() => {
       this.orders = this.orders.filter((product) => product._id !== id);
     });

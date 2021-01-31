@@ -110,8 +110,8 @@ export class CartService {
     });
   }
 
-  public clearCart() {
-    return this.cart$.next(this.intialCart);
+  public clearCart(): void {
+    this.cart$.next(this.intialCart);
   }
 
   public fullfillCartOnLogin(): Observable<Cart> {
@@ -132,19 +132,22 @@ export class CartService {
     });
   }
 
-  private addToCartServer(orderProduct: OrderProduct) {
-    return this.http.post('/cart', orderProduct);
+  private addToCartServer(orderProduct: OrderProduct): Observable<Cart> {
+    return this.http.post<Cart>('/cart', orderProduct);
   }
 
-  private removeFromCartServer(orderProductId: string) {
-    return this.http.delete('/cart', { params: { orderProductId } });
+  private removeFromCartServer(orderProductId: string): Observable<Cart> {
+    return this.http.delete<Cart>('/cart', { params: { orderProductId } });
   }
 
-  private upsert(array: OrderProduct[], item: OrderProduct) {
+  private upsert(array: OrderProduct[], item: OrderProduct): void {
     const i = array.findIndex(
       (_item) => _item.product._id === item.product._id
     );
-    if (i > -1) array[i] = item;
-    else array.push(item);
+    if (i > -1) {
+      array[i] = item;
+    } else {
+      array.push(item);
+    }
   }
 }

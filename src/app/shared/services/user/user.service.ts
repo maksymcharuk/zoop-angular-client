@@ -6,21 +6,23 @@ import { TokenService } from '../token/token.service';
   providedIn: 'root',
 })
 export class UserService {
-  get currentUser() {
+  // TODO: Add specific type for User
+  get currentUser(): any {
     return this.tokenService.currentUser;
   }
 
   constructor(private tokenService: TokenService) {}
 
-  public isSeller() {
+  // TODO: Add specific type for User
+  public isSeller(): any {
     return this.currentUser && this.currentUser.seller;
   }
 
-  public isSignedIn() {
+  public isSignedIn(): boolean {
     return this.tokenService.isSignedIn();
   }
 
-  public isSignedOut() {
+  public isSignedOut(): boolean {
     return this.tokenService.isSignedOut();
   }
 }

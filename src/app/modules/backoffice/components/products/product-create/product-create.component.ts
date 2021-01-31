@@ -17,7 +17,7 @@ export class ProductCreateComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(data) {
+  onSubmit(data): void {
     this.productsService.createProduct(data).subscribe(
       (res) => {
         this.router.navigate(['backoffice', 'products']);

@@ -25,7 +25,7 @@ export class CartComponent implements OnInit {
     });
   }
 
-  addToCart(cartProduct: OrderProduct) {
+  addToCart(cartProduct: OrderProduct): void {
     this.loading = true;
 
     this.cartService.addToCart(cartProduct).subscribe(() => {
@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
     });
   }
 
-  removeFromCart(cartProduct: OrderProduct) {
+  removeFromCart(cartProduct: OrderProduct): void {
     this.loading = true;
 
     this.cartService.removeFromCart(cartProduct).subscribe(() => {

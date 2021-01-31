@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Category } from '../../interfaces';
@@ -15,15 +15,17 @@ export class CategoriesService {
   }
 
   getSuitableParents(id?: string): Observable<Category[]> {
-    let params = {};
+    const params = {
+      id: null,
+    };
 
     if (id) {
-      params['id'] = id;
+      params.id = id;
     }
 
     return this.http.get<Category[]>(
       '/backoffice/categories-filtered/all-suitable-parents',
-      { params: params }
+      { params }
     );
   }
 
@@ -31,15 +33,15 @@ export class CategoriesService {
     return this.http.get<Category>(`/backoffice/categories/${id}`);
   }
 
-  createCategory(data: any) {
+  createCategory(data: any): Observable<Category> {
     return this.http.post<Category>('/backoffice/categories', data);
   }
 
-  updateCategory(id: string, data: any) {
+  updateCategory(id: string, data: any): Observable<Category> {
     return this.http.put<Category>(`/backoffice/categories/${id}`, data);
   }
 
-  removeCategory(id: string) {
+  removeCategory(id: string): Observable<Category> {
     return this.http.delete<Category>(`/backoffice/categories/${id}`);
   }
 }

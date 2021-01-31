@@ -52,7 +52,7 @@ export class OrderFormComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (!this.orderForm.valid) {
       this.alertsService.showAlertDanger('Some required fields are missing');
       return;

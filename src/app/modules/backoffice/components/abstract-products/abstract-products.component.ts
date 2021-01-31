@@ -18,7 +18,7 @@ export class AbstractProductsComponent implements OnInit {
     });
   }
 
-  deleteProduct(id: string) {
+  deleteProduct(id: string): void {
     this.abstractProductsService.remove(id).subscribe(() => {
       this.abstractProducts = this.abstractProducts.filter(
         (product) => product._id !== id

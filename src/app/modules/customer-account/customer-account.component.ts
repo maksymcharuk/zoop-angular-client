@@ -14,7 +14,7 @@ export class CustomerAccountComponent {
     private authService: AuthenticationService
   ) {}
 
-  public signOut() {
+  public signOut(): void {
     this.authService.signOut().subscribe(
       (res) => this.router.navigate(['/']),
       (error) => this.router.navigate(['/'])

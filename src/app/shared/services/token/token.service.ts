@@ -14,9 +14,9 @@ import { LocalStorageService } from '../local-storage/local-storage.service';
 export class TokenService {
   public userIsSiggnedIn$: Subject<boolean> = new Subject();
 
-  private _currentUser;
+  private _currentUser: any;
 
-  get currentUser() {
+  get currentUser(): any {
     return this._currentUser || this.localStorage.getItem('user');
   }
 
@@ -64,7 +64,7 @@ export class TokenService {
     );
   }
 
-  signOut() {
+  signOut(): Observable<{}> {
     return of({}).pipe(
       tap(() => {
         this.localStorage.removeItem('token');
@@ -76,20 +76,20 @@ export class TokenService {
     );
   }
 
-  isSignedIn() {
+  isSignedIn(): boolean {
     return moment().isBefore(this.getExpiration());
   }
 
-  isSignedOut() {
+  isSignedOut(): boolean {
     return !this.isSignedIn();
   }
 
-  getExpiration() {
+  getExpiration(): moment.Moment {
     const exp = JSON.parse(this.localStorage.getItem('exp'));
     return moment(+exp);
   }
 
-  private setSession(authResult: AuthResponseDto) {
+  private setSession(authResult: AuthResponseDto): void {
     const decodedToken: Token = jwtDecode(authResult.token);
     const exp = moment().add(decodedToken.exp - Date.now() / 1000, 'second');
 

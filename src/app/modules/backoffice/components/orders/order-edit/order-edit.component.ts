@@ -37,7 +37,7 @@ export class OrderEditComponent implements OnInit {
     });
   }
 
-  onSubmit(data) {
+  onSubmit(data): void {
     this.ordersService.updateOrder(this.orderId, data).subscribe(
       (res) => {
         this.router.navigate(['backoffice', 'orders']);

@@ -13,7 +13,10 @@ import {
 export class AuthenticationGuard implements CanActivate {
   constructor(private userService: UserService, private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean {
     const currentUser = this.userService.currentUser;
     const isSignedIn = this.userService.isSignedIn();
     const params = {

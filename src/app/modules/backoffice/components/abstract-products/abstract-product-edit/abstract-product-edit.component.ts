@@ -37,7 +37,7 @@ export class AbstractProductEditComponent implements OnInit {
     });
   }
 
-  onSubmit(data) {
+  onSubmit(data): void {
     this.abstractProductsService.update(this.abstractProductId, data).subscribe(
       (res) => {
         this.router.navigate(['backoffice', 'abstract-products']);

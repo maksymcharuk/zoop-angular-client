@@ -8,12 +8,12 @@ import { AlertComponent } from '../../components/alert/alert.component';
 export class AlertsService {
   constructor(private dom: DOMService) {}
 
-  showAlertSuccess(text, params?) {
-    this.showAlert({ type: 'success', text: text, ...params });
+  showAlertSuccess(text, params?): void {
+    this.showAlert({ type: 'success', text, ...params });
   }
 
-  showAlertDanger(text, params?) {
-    this.showAlert({ type: 'danger', text: text, ...params });
+  showAlertDanger(text, params?): void {
+    this.showAlert({ type: 'danger', text, ...params });
   }
 
   showAlert(params): ComponentRef<AlertComponent> {
@@ -32,7 +32,7 @@ export class AlertsService {
     return alert;
   }
 
-  closeAlert(alert: ComponentRef<AlertComponent>) {
+  closeAlert(alert: ComponentRef<AlertComponent>): void {
     alert.instance.close();
   }
 }

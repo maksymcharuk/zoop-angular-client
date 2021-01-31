@@ -1,16 +1,21 @@
-import { Component, OnInit, Input, Output,
-  EventEmitter, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class AlertComponent implements OnInit {
-
-  private _closed: boolean = false;
-  private timeout: number = 5000;
+  private _closed = false;
+  private timeout = 5000;
 
   @Input() selfClosing: boolean;
   @Input() dismissible: boolean;
@@ -22,14 +27,14 @@ export class AlertComponent implements OnInit {
     value ? this.closeEm.emit() : this.openEm.emit();
   }
 
-  get closed() {
+  get closed(): boolean {
     return this._closed;
   }
 
   @Output() openEm: EventEmitter<any> = new EventEmitter();
   @Output() closeEm: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     if (this.selfClosing) {
@@ -39,11 +44,11 @@ export class AlertComponent implements OnInit {
     }
   }
 
-  open() {
+  open(): void {
     this.closed = false;
   }
 
-  close() {
+  close(): void {
     this.closed = true;
   }
 }

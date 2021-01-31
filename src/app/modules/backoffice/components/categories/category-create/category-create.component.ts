@@ -17,7 +17,7 @@ export class CategoryCreateComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(data) {
+  onSubmit(data): void {
     this.categoriesService.createCategory(data).subscribe(
       (res) => {
         this.router.navigate(['backoffice', 'categories']);
