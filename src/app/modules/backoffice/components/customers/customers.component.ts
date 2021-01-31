@@ -18,8 +18,8 @@ export class СustomersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.parent.params.subscribe(() => {
-      this.customers$ = this.customersService.getCustomers();
-    });
+    // this.route.parent.params.subscribe(() => {
+    //   this.customers$ = this.customersService.getCustomers();
+    // });
   }
 }

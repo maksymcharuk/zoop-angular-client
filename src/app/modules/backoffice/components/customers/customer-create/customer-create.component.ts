@@ -25,17 +25,17 @@ export class CustomerCreateComponent implements OnInit {
   }
 
   onSubmit(data): void {
-    this.customersService
-      .createCustomer({
-        name: data.name
-      })
-      .subscribe(
-        res => {
-          this.router.navigate(['shops', this.shopId, 'customers']);
-        },
-        err => {
-          this.alertService.showAlertDanger(err.message);
-        }
-      );
+    // this.customersService
+    //   .createCustomer({
+    //     name: data.name
+    //   })
+    //   .subscribe(
+    //     res => {
+    //       this.router.navigate(['shops', this.shopId, 'customers']);
+    //     },
+    //     err => {
+    //       this.alertService.showAlertDanger(err.message);
+    //     }
+    //   );
   }
 }
