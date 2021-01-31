@@ -9,7 +9,7 @@ import { AuthResponseDto, Token } from '../../../interfaces';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class TokenService {
   public userIsSiggnedIn$: Subject<boolean> = new Subject();
@@ -30,7 +30,7 @@ export class TokenService {
     password: string;
   }): Observable<AuthResponseDto> {
     return this.http.post<AuthResponseDto>('/auth/register', data).pipe(
-      tap((authResult) => {
+      tap(authResult => {
         this.setSession(authResult);
         this.userIsSiggnedIn$.next(true);
       }),
@@ -43,7 +43,7 @@ export class TokenService {
     password: string;
   }): Observable<AuthResponseDto> {
     return this.http.post<AuthResponseDto>(`/auth/login`, data).pipe(
-      tap((authResult) => {
+      tap(authResult => {
         this.setSession(authResult);
         this.userIsSiggnedIn$.next(true);
       }),
@@ -56,7 +56,7 @@ export class TokenService {
     password: string;
   }): Observable<AuthResponseDto> {
     return this.http.post<AuthResponseDto>(`/auth/login-seller`, data).pipe(
-      tap((authResult) => {
+      tap(authResult => {
         this.setSession(authResult);
         this.userIsSiggnedIn$.next(true);
       }),
@@ -95,7 +95,7 @@ export class TokenService {
 
     this._currentUser = {
       email: decodedToken.email,
-      seller: decodedToken.seller,
+      seller: decodedToken.seller
     };
 
     this.localStorage.setItem('token', authResult.token);

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { TokenService } from '../token/token.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthenticationService {
   constructor(private tokenService: TokenService) {}

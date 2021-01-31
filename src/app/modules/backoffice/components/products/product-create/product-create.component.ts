@@ -6,7 +6,7 @@ import { ProductsService } from '../../../services/products/products.service';
 @Component({
   selector: 'backoffice-product-create',
   templateUrl: './product-create.component.html',
-  styleUrls: ['./product-create.component.scss'],
+  styleUrls: ['./product-create.component.scss']
 })
 export class ProductCreateComponent implements OnInit {
   constructor(
@@ -19,10 +19,10 @@ export class ProductCreateComponent implements OnInit {
 
   onSubmit(data): void {
     this.productsService.createProduct(data).subscribe(
-      (res) => {
+      res => {
         this.router.navigate(['backoffice', 'products']);
       },
-      (err) => {
+      err => {
         this.alertService.showAlertDanger(err.message);
       }
     );

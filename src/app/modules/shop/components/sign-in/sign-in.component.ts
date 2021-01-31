@@ -3,7 +3,7 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
-  AbstractControl,
+  AbstractControl
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ import { CartService } from '../../services/cart/cart.service';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss'],
+  styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
   @ViewChild('submitButton') submitButton: ElementRef;
@@ -35,10 +35,10 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
     this.signInForm = this.fb.group({
       email: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', Validators.required]
     });
 
-    this.route.queryParams.subscribe((queryParams) => {
+    this.route.queryParams.subscribe(queryParams => {
       this.returnUrl = queryParams.returnUrl;
     });
   }
@@ -63,17 +63,17 @@ export class SignInComponent implements OnInit {
     this.authService
       .signIn({
         email: this.emailCtrl.value,
-        password: this.passwordCtrl.value,
+        password: this.passwordCtrl.value
       })
       .subscribe(
-        (res) => {
+        res => {
           this.cartService.fullfillCartOnLogin().subscribe(() => {
             this.returnUrl
               ? this.router.navigate([this.returnUrl])
               : this.router.navigate(['customer-account']);
           });
         },
-        (err) => {
+        err => {
           this.submitButton.nativeElement.removeAttribute('disabled');
           this.alertService.showAlertDanger(err.message);
         }

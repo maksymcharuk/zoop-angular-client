@@ -12,12 +12,12 @@ import { UserService } from '../../../../shared/services/user/user.service';
 import { OrderCalculationsService } from '../order-calculations/order-calculations.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CartService {
   public intialCart = {
     products: [],
-    totalPrice: 0,
+    totalPrice: 0
   } as Cart;
   public cart$: BehaviorSubject<Cart> = new BehaviorSubject(this.intialCart);
 
@@ -42,7 +42,7 @@ export class CartService {
   }
 
   public addToCart(orderProduct: OrderProduct): Observable<Cart> {
-    return new Observable((subscriber) => {
+    return new Observable(subscriber => {
       if (this.userService.isSignedIn()) {
         this.addToCartServer(orderProduct).subscribe((cart: Cart) => {
           this.localStorage.setItem(this.guestCartKey, cart);
@@ -58,7 +58,7 @@ export class CartService {
 
         this.orderCalculationsService
           .getTotalPrice(products)
-          .subscribe((totalPrice) => {
+          .subscribe(totalPrice => {
             const newCart: Cart = { ...cart, products, totalPrice };
             this.localStorage.setItem(this.guestCartKey, newCart);
             this.cart$.next(newCart);
@@ -70,7 +70,7 @@ export class CartService {
   }
 
   public removeFromCart(orderProduct: OrderProduct): Observable<Cart> {
-    return new Observable((subscriber) => {
+    return new Observable(subscriber => {
       if (this.userService.isSignedIn()) {
         this.removeFromCartServer(orderProduct.product._id).subscribe(
           (cart: Cart) => {
@@ -98,7 +98,7 @@ export class CartService {
     const guestCart =
       this.localStorage.getItem(this.guestCartKey) || this.intialCart;
 
-    return new Observable((subscriber) => {
+    return new Observable(subscriber => {
       if (this.userService.isSignedIn()) {
         this.http.get<Cart>('/cart').subscribe((cart: Cart) => {
           subscriber.next(cart);
@@ -117,7 +117,7 @@ export class CartService {
   public fullfillCartOnLogin(): Observable<Cart> {
     const guestCart = this.localStorage.getItem(this.guestCartKey);
 
-    return new Observable((subscriber) => {
+    return new Observable(subscriber => {
       if (guestCart) {
         return this.http.put('/cart', guestCart).subscribe((cart: Cart) => {
           this.localStorage.removeItem(this.guestCartKey);
@@ -141,9 +141,7 @@ export class CartService {
   }
 
   private upsert(array: OrderProduct[], item: OrderProduct): void {
-    const i = array.findIndex(
-      (_item) => _item.product._id === item.product._id
-    );
+    const i = array.findIndex(_item => _item.product._id === item.product._id);
     if (i > -1) {
       array[i] = item;
     } else {

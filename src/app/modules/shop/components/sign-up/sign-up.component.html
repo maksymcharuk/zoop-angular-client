@@ -1,5 +1,9 @@
 <div class="offset-md-3 col-md-6 mt-5">
-  <form #signUpFormRef="ngForm" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <form
+    #signUpFormRef="ngForm"
+    [formGroup]="signUpForm"
+    (ngSubmit)="onSubmit()"
+  >
     <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
     <div class="form-row">
       <div class="col-md-12 mb-3">
@@ -9,8 +13,12 @@
           type="email"
           id="inputEmail"
           class="form-control"
-          [class]="{ 'is-invalid': emailCtrl.invalid && emailCtrl.touched }">
-        <div *ngIf="emailCtrl.invalid && emailCtrl.touched" class="invalid-feedback">
+          [class]="{ 'is-invalid': emailCtrl.invalid && emailCtrl.touched }"
+        />
+        <div
+          *ngIf="emailCtrl.invalid && emailCtrl.touched"
+          class="invalid-feedback"
+        >
           <div *ngIf="emailCtrl.hasError('required')">
             This field is required.
           </div>
@@ -25,8 +33,14 @@
           type="password"
           id="inputPassword"
           class="form-control"
-          [class]="{ 'is-invalid': passwordCtrl.invalid && passwordCtrl.touched }">
-        <div *ngIf="passwordCtrl.invalid && passwordCtrl.touched" class="invalid-feedback">
+          [class]="{
+            'is-invalid': passwordCtrl.invalid && passwordCtrl.touched
+          }"
+        />
+        <div
+          *ngIf="passwordCtrl.invalid && passwordCtrl.touched"
+          class="invalid-feedback"
+        >
           <div *ngIf="passwordCtrl.hasError('required')">
             This field is required.
           </div>
@@ -41,8 +55,19 @@
           type="password"
           id="inputConfirmPassword"
           class="form-control"
-          [class]="{ 'is-invalid': (confirmPasswordCtrl.invalid && confirmPasswordCtrl.touched) || (confirmPasswordCtrl.touched && signUpForm.invalid) }">
-        <div *ngIf="(confirmPasswordCtrl.invalid && confirmPasswordCtrl.touched) || (confirmPasswordCtrl.touched && signUpForm.invalid)" class="invalid-feedback">
+          [class]="{
+            'is-invalid':
+              (confirmPasswordCtrl.invalid && confirmPasswordCtrl.touched) ||
+              (confirmPasswordCtrl.touched && signUpForm.invalid)
+          }"
+        />
+        <div
+          *ngIf="
+            (confirmPasswordCtrl.invalid && confirmPasswordCtrl.touched) ||
+            (confirmPasswordCtrl.touched && signUpForm.invalid)
+          "
+          class="invalid-feedback"
+        >
           <div *ngIf="confirmPasswordCtrl.hasError('required')">
             This field is required.
           </div>
@@ -53,6 +78,12 @@
       </div>
     </div>
 
-    <button #submitButton class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    <button
+      #submitButton
+      class="btn btn-lg btn-primary btn-block"
+      type="submit"
+    >
+      Sign up
+    </button>
   </form>
 </div>

@@ -8,7 +8,7 @@ import { OrdersService } from '../../../services/orders/orders.service';
 @Component({
   selector: 'backoffice-order-form',
   templateUrl: './order-form.component.html',
-  styleUrls: ['./order-form.component.scss'],
+  styleUrls: ['./order-form.component.scss']
 })
 export class OrderFormComponent implements OnInit {
   @Input() order;
@@ -18,7 +18,7 @@ export class OrderFormComponent implements OnInit {
   public orderForm: FormGroup;
   public deliveryTypes = [
     { label: 'Pickup', value: 'pickup' },
-    { label: 'Nova Poshta', value: 'novaposhta' },
+    { label: 'Nova Poshta', value: 'novaposhta' }
   ];
 
   public products: OrderProduct[];
@@ -36,15 +36,15 @@ export class OrderFormComponent implements OnInit {
         firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
-        phone: ['', [Validators.required]],
+        phone: ['', [Validators.required]]
       }),
       deliveryDetails: this.fb.group({
         type: [this.deliveryTypes[0].value, [Validators.required]],
         address: '',
         city: '',
         state: '',
-        details: '',
-      }),
+        details: ''
+      })
     });
 
     if (this.order) {
@@ -62,10 +62,10 @@ export class OrderFormComponent implements OnInit {
 
     const order = {
       ...this.orderForm.value,
-      products: this.products.map((p) => ({
+      products: this.products.map(p => ({
         product: p.product._id,
-        quantity: p.quantity,
-      })),
+        quantity: p.quantity
+      }))
     };
 
     this.orderService.createOrder(order).subscribe(() => {

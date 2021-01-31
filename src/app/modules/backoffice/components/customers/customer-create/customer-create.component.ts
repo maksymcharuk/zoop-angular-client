@@ -6,7 +6,7 @@ import { CustomersService } from '../../../services/customers/customers.service'
 @Component({
   selector: 'backoffice-customer-create',
   templateUrl: './customer-create.component.html',
-  styleUrls: ['./customer-create.component.scss'],
+  styleUrls: ['./customer-create.component.scss']
 })
 export class CustomerCreateComponent implements OnInit {
   private shopId: number;
@@ -19,7 +19,7 @@ export class CustomerCreateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.parent.params.subscribe((params) => {
+    this.route.parent.params.subscribe(params => {
       this.shopId = +params.id;
     });
   }
@@ -27,13 +27,13 @@ export class CustomerCreateComponent implements OnInit {
   onSubmit(data): void {
     this.customersService
       .createCustomer({
-        name: data.name,
+        name: data.name
       })
       .subscribe(
-        (res) => {
+        res => {
           this.router.navigate(['shops', this.shopId, 'customers']);
         },
-        (err) => {
+        err => {
           this.alertService.showAlertDanger(err.message);
         }
       );

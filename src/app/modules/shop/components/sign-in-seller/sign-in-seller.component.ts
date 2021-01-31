@@ -3,7 +3,7 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
-  AbstractControl,
+  AbstractControl
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -14,7 +14,7 @@ import { AlertsService } from '../../../../shared/services/alerts/alerts.service
 @Component({
   selector: 'app-sign-in-seller',
   templateUrl: './sign-in-seller.component.html',
-  styleUrls: ['./sign-in-seller.component.scss'],
+  styleUrls: ['./sign-in-seller.component.scss']
 })
 export class SignInSellerComponent implements OnInit {
   @ViewChild('submitButton') submitButton: ElementRef;
@@ -34,10 +34,10 @@ export class SignInSellerComponent implements OnInit {
   ngOnInit(): void {
     this.signInForm = this.fb.group({
       email: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', Validators.required]
     });
 
-    this.route.queryParams.subscribe((queryParams) => {
+    this.route.queryParams.subscribe(queryParams => {
       this.returnUrl = queryParams.returnUrl;
     });
   }
@@ -62,10 +62,10 @@ export class SignInSellerComponent implements OnInit {
     this.authService
       .signInSeller({
         email: this.emailCtrl.value,
-        password: this.passwordCtrl.value,
+        password: this.passwordCtrl.value
       })
       .subscribe(
-        (res) => {
+        res => {
           this.returnUrl
             ? this.router.navigate([this.returnUrl])
             : this.router.navigate(['backoffice']);

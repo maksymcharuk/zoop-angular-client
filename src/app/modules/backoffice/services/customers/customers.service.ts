@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { LocalStorageService } from '../../../../shared/services/local-storage/local-storage.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CustomersService {
   constructor(

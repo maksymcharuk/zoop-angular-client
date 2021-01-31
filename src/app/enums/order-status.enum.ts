@@ -9,5 +9,5 @@ export enum OrderStatus {
   Processing = 'processing',
   Refunded = 'refunded',
   Shipped = 'shipped',
-  Sent = 'sent',
+  Sent = 'sent'
 }

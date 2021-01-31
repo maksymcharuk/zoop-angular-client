@@ -4,7 +4,7 @@ import { CanActivate } from '@angular/router';
 import { TokenService } from '../../shared/services/token/token.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class IsSignedOutGuard implements CanActivate {
   constructor(private tokenService: TokenService) {}

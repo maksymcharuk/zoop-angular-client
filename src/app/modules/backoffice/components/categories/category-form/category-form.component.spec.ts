@@ -8,7 +8,7 @@ describe('CategoryFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CategoryFormComponent],
+      declarations: [CategoryFormComponent]
     }).compileComponents();
   }));
 

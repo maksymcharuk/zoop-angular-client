@@ -1,25 +1,24 @@
 <div class="container-fluid">
   <div class="row">
-
     <div class="col-9">
       <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
         <div formGroupName="recieverDetails">
           <h5>Reciever Details</h5>
           <div class="form-group">
             <label for="firstName">First Name</label>
-            <input type="text" id="firstName" formControlName="firstName">
+            <input type="text" id="firstName" formControlName="firstName" />
           </div>
           <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" formControlName="lastName">
+            <input type="text" id="lastName" formControlName="lastName" />
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" id="email" formControlName="email">
+            <input type="text" id="email" formControlName="email" />
           </div>
           <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="text" id="phone" formControlName="phone">
+            <input type="text" id="phone" formControlName="phone" />
           </div>
         </div>
         <div formGroupName="deliveryDetails">
@@ -27,24 +26,26 @@
           <div class="form-group">
             <label for="type">Type</label>
             <select type="text" id="type" formControlName="type">
-              <option *ngFor="let type of deliveryTypes" value="type.value">{{ type.label }}</option>
+              <option *ngFor="let type of deliveryTypes" value="type.value">
+                {{ type.label }}
+              </option>
             </select>
           </div>
           <div class="form-group">
             <label for="address">Address</label>
-            <input type="text" id="address" formControlName="address">
+            <input type="text" id="address" formControlName="address" />
           </div>
           <div class="form-group">
             <label for="city">City</label>
-            <input type="text" id="city" formControlName="city">
+            <input type="text" id="city" formControlName="city" />
           </div>
           <div class="form-group">
             <label for="state">State</label>
-            <input type="text" id="state" formControlName="state">
+            <input type="text" id="state" formControlName="state" />
           </div>
           <div class="form-group">
             <label for="details">Details</label>
-            <input type="text" id="details" formControlName="details">
+            <input type="text" id="details" formControlName="details" />
           </div>
         </div>
         <button>Submit order</button>
@@ -61,6 +62,5 @@
       </div>
       <b>Total Price: ${{ cart?.totalPrice }}</b>
     </div>
-
   </div>
 </div>

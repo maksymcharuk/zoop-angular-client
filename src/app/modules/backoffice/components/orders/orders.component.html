@@ -1,7 +1,6 @@
 <div class="orders">
-
   <div class="orders__inner" *ngIf="orders; else loading">
-    <div *ngIf="orders.length > 0; then ordersList else firstOrder"></div>
+    <div *ngIf="orders.length > 0; then ordersList; else firstOrder"></div>
 
     <ng-template #ordersList>
       <div class="orders__title">
@@ -11,9 +10,21 @@
       <ul class="orders__list">
         <li class="orders__list-item" *ngFor="let order of orders">
           <span class="orders__list-item-img"></span>
-          <span class="orders__list-item-name">{{ order.name }} - ${{ order.price }}</span>
-          <button class="btn btn-secondary orders__list-item-button" [routerLink]="['edit', order._id]">Edit</button>
-          <button class="btn btn-danger orders__list-item-button" (click)="deleteOrder(order._id)">Delete</button>
+          <span class="orders__list-item-name"
+            >{{ order.name }} - ${{ order.price }}</span
+          >
+          <button
+            class="btn btn-secondary orders__list-item-button"
+            [routerLink]="['edit', order._id]"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-danger orders__list-item-button"
+            (click)="deleteOrder(order._id)"
+          >
+            Delete
+          </button>
         </li>
       </ul>
 
@@ -32,5 +43,4 @@
   <ng-template #loading>
     <app-loader></app-loader>
   </ng-template>
-
 </div>

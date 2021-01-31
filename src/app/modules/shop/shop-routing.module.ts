@@ -24,24 +24,24 @@ const routes: Routes = [
       {
         path: 'sign-in',
         component: SignInComponent,
-        canActivate: [IsSignedOutGuard],
+        canActivate: [IsSignedOutGuard]
       },
       {
         path: 'sign-up',
         component: SignUpComponent,
-        canActivate: [IsSignedOutGuard],
+        canActivate: [IsSignedOutGuard]
       },
       {
         path: 'sign-in-seller',
         component: SignInSellerComponent,
-        canActivate: [IsSignedOutGuard],
-      },
-    ],
-  },
+        canActivate: [IsSignedOutGuard]
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class ShopRoutingModule {}

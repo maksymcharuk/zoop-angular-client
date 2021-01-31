@@ -7,7 +7,7 @@ import { ProductsService } from '../../../services/products/products.service';
 @Component({
   selector: 'backoffice-product-edit',
   templateUrl: './product-edit.component.html',
-  styleUrls: ['./product-edit.component.scss'],
+  styleUrls: ['./product-edit.component.scss']
 })
 export class ProductEditComponent implements OnInit {
   private productId: string;
@@ -22,14 +22,14 @@ export class ProductEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.route.params.subscribe(params => {
       this.productId = params.id;
 
       this.productsService.getProductById(this.productId).subscribe(
         (res: any) => {
           this.product$.next(res);
         },
-        (err) => {
+        err => {
           this.alertService.showAlertDanger(err.message);
         }
       );
@@ -38,10 +38,10 @@ export class ProductEditComponent implements OnInit {
 
   onSubmit(data): void {
     this.productsService.updateProduct(this.productId, data).subscribe(
-      (res) => {
+      res => {
         this.router.navigate(['backoffice', 'products']);
       },
-      (err) => {
+      err => {
         this.alertService.showAlertDanger(err.message);
       }
     );

@@ -7,7 +7,7 @@ import { OrdersService } from '../../../services/orders/orders.service';
 @Component({
   selector: 'backoffice-order-create',
   templateUrl: './order-create.component.html',
-  styleUrls: ['./order-create.component.scss'],
+  styleUrls: ['./order-create.component.scss']
 })
 export class OrderCreateComponent implements OnInit {
   constructor(
@@ -20,10 +20,10 @@ export class OrderCreateComponent implements OnInit {
 
   onSubmit(data): void {
     this.ordersService.createOrder(data).subscribe(
-      (res) => {
+      res => {
         this.router.navigate(['backoffice', 'orders']);
       },
-      (err) => {
+      err => {
         this.alertService.showAlertDanger(err.message);
       }
     );

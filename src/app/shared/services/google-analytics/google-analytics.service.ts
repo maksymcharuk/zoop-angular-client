@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 declare let gtag: (type, name, data) => void;
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class GoogleAnalyticsService {
   constructor() {}
@@ -17,7 +17,7 @@ export class GoogleAnalyticsService {
     gtag('event', eventName, {
       event_category: eventCategory,
       event_label: eventLabel,
-      value: eventValue,
+      value: eventValue
     });
   }
 }

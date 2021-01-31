@@ -35,11 +35,11 @@ const routes: Routes = [
       { path: 'abstract-products', component: AbstractProductsComponent },
       {
         path: 'abstract-products/create',
-        component: AbstractProductCreateComponent,
+        component: AbstractProductCreateComponent
       },
       {
         path: 'abstract-products/edit/:id',
-        component: AbstractProductEditComponent,
+        component: AbstractProductEditComponent
       },
       { path: 'categories', component: CategoriesComponent },
       { path: 'categories/create', component: CategoryCreateComponent },
@@ -48,13 +48,13 @@ const routes: Routes = [
       { path: 'orders/create', component: OrderCreateComponent },
       { path: 'customers', component: СustomersComponent },
       { path: 'customers/create', component: CustomerCreateComponent },
-      { path: 'account', component: AccountComponent },
-    ],
-  },
+      { path: 'account', component: AccountComponent }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class BackofficeRoutingModule {}

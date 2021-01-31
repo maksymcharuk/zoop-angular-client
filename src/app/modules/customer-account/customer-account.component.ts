@@ -6,7 +6,7 @@ import { AuthenticationService } from '../../shared/services/authentication/auth
   selector: 'app-customer-account',
   templateUrl: './customer-account.component.html',
   styleUrls: ['./customer-account.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 export class CustomerAccountComponent {
   constructor(
@@ -16,8 +16,8 @@ export class CustomerAccountComponent {
 
   public signOut(): void {
     this.authService.signOut().subscribe(
-      (res) => this.router.navigate(['/']),
-      (error) => this.router.navigate(['/'])
+      res => this.router.navigate(['/']),
+      error => this.router.navigate(['/'])
     );
   }
 }

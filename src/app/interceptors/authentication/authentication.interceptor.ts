@@ -3,7 +3,7 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpHandler,
-  HttpRequest,
+  HttpRequest
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -23,7 +23,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
 
     if (token && isApiUrl) {
       request = request.clone({
-        headers: request.headers.set('Authorization', 'Bearer ' + token),
+        headers: request.headers.set('Authorization', 'Bearer ' + token)
       });
     }
 

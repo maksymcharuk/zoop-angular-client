@@ -28,7 +28,7 @@ import { SignInSellerComponent } from './components/sign-in-seller/sign-in-selle
     OrderComponent,
     SignInComponent,
     SignUpComponent,
-    SignInSellerComponent,
+    SignInSellerComponent
   ],
   imports: [
     CommonModule,
@@ -37,8 +37,8 @@ import { SignInSellerComponent } from './components/sign-in-seller/sign-in-selle
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule,
+    SharedModule
   ],
-  providers: [],
+  providers: []
 })
 export class ShopModule {}

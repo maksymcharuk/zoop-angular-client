@@ -9,6 +9,6 @@ import { LoaderComponent } from './components/loader/loader.component';
 @NgModule({
   declarations: [AlertComponent, LoaderComponent],
   imports: [CommonModule, BrowserModule, NgbModule],
-  exports: [AlertComponent, LoaderComponent],
+  exports: [AlertComponent, LoaderComponent]
 })
 export class SharedModule {}

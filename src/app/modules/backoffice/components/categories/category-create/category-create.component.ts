@@ -6,7 +6,7 @@ import { CategoriesService } from '../../../services/categories/categories.servi
 @Component({
   selector: 'backoffice-category-create',
   templateUrl: './category-create.component.html',
-  styleUrls: ['./category-create.component.scss'],
+  styleUrls: ['./category-create.component.scss']
 })
 export class CategoryCreateComponent implements OnInit {
   constructor(
@@ -19,10 +19,10 @@ export class CategoryCreateComponent implements OnInit {
 
   onSubmit(data): void {
     this.categoriesService.createCategory(data).subscribe(
-      (res) => {
+      res => {
         this.router.navigate(['backoffice', 'categories']);
       },
-      (err) => {
+      err => {
         this.alertService.showAlertDanger(err.message);
       }
     );

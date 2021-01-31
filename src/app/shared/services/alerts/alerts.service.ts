@@ -3,7 +3,7 @@ import { DOMService } from '../dom/dom.service';
 import { AlertComponent } from '../../components/alert/alert.component';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AlertsService {
   constructor(private dom: DOMService) {}
@@ -22,7 +22,7 @@ export class AlertsService {
     alert = this.dom.appendComponent(AlertComponent, {
       selfClosing: true,
       dismissible: true,
-      ...params,
+      ...params
     });
 
     alert.instance.closeEm.subscribe(() => {

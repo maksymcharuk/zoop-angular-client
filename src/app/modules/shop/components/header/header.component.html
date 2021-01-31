@@ -1,4 +1,6 @@
-<header class="header d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
+<header
+  class="header d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm"
+>
   <h5 class="my-0 mr-md-auto font-weight-normal">
     <a class="brand-link" [routerLink]="['/']">ZOOP</a>
   </h5>
@@ -7,15 +9,29 @@
     <a class="p-2 text-dark" href="#">Enterprise</a>
     <a class="p-2 text-dark" href="#">Support</a> -->
     <a class="p-2 text-dark" [routerLink]="['/catalog']">Catalog</a>
-    <div *ngIf="isUserSignedIn then signedInBlock else signedOutBlock"></div>
+    <div *ngIf="isUserSignedIn; then signedInBlock; else signedOutBlock"></div>
     <ng-template #signedInBlock>
-      <a class="p-2 text-dark" [routerLink]="['/customer-account']">My account</a>
-      <a *ngIf="isUserSeller" class="p-2 text-dark" [routerLink]="['/backoffice']">Backoffice</a>
-    </ng-template >
+      <a class="p-2 text-dark" [routerLink]="['/customer-account']"
+        >My account</a
+      >
+      <a
+        *ngIf="isUserSeller"
+        class="p-2 text-dark"
+        [routerLink]="['/backoffice']"
+        >Backoffice</a
+      >
+    </ng-template>
     <ng-template #signedOutBlock>
       <a class="p-2 text-dark" [routerLink]="['/sign-in']">Sign In</a>
     </ng-template>
   </nav>
-  <a *ngIf="isUserSignedOut" class="btn btn-outline-primary" [routerLink]="['/sign-up']">Sign up</a>
-  <a class="btn btn-outline-secondary" [routerLink]="['/cart']">Cart ({{ cartProducts.length }})</a>
+  <a
+    *ngIf="isUserSignedOut"
+    class="btn btn-outline-primary"
+    [routerLink]="['/sign-up']"
+    >Sign up</a
+  >
+  <a class="btn btn-outline-secondary" [routerLink]="['/cart']"
+    >Cart ({{ cartProducts.length }})</a
+  >
 </header>

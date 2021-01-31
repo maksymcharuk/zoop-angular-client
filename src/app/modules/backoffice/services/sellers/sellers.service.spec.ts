@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import {
   HttpTestingController,
-  HttpClientTestingModule,
+  HttpClientTestingModule
 } from '@angular/common/http/testing';
 
 import { SellersService } from './sellers.service';
@@ -14,7 +14,7 @@ describe('SellersService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [SellersService],
+      providers: [SellersService]
     });
     service = TestBed.inject(SellersService);
     http = TestBed.inject(HttpTestingController);
@@ -29,7 +29,7 @@ describe('SellersService', () => {
   });
 
   it('should send invite', () => {
-    service.invite({ email: dataStub[0].email }).subscribe((data) => {
+    service.invite({ email: dataStub[0].email }).subscribe(data => {
       expect(data).toEqual(dataStub);
     });
 

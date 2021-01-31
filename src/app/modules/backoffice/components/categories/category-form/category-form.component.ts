@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'backoffice-category-form',
   templateUrl: './category-form.component.html',
-  styleUrls: ['./category-form.component.scss'],
+  styleUrls: ['./category-form.component.scss']
 })
 export class CategoryFormComponent implements OnInit {
   @Input() category: Category = {} as Category;
@@ -29,7 +29,7 @@ export class CategoryFormComponent implements OnInit {
       name: ['', Validators.required],
       description: [''],
       parentCategory: [''],
-      status: [''],
+      status: ['']
     });
 
     if (this.category) {
@@ -63,7 +63,7 @@ export class CategoryFormComponent implements OnInit {
         parentCategory: this.categoryForm.get('parentCategory').value,
         status: this.categoryForm.get('status').value
           ? Status.Active
-          : Status.Inactive,
+          : Status.Inactive
       })
     );
   }

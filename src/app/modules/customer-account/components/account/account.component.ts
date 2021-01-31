@@ -6,7 +6,7 @@ import { AccountService } from './../../services/account/account.service';
 @Component({
   selector: 'customer-account-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss'],
+  styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
   public account;
@@ -28,11 +28,11 @@ export class AccountComponent implements OnInit {
         addr1: [],
         city: [],
         state: [],
-        country: [],
-      }),
+        country: []
+      })
     });
 
-    this.accountService.getAccount().subscribe((account) => {
+    this.accountService.getAccount().subscribe(account => {
       this.account = account;
       this.accountForm.patchValue(account);
       this.loading = false;

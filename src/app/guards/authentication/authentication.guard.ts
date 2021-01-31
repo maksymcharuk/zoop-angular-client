@@ -4,11 +4,11 @@ import {
   ActivatedRouteSnapshot,
   CanActivate,
   Router,
-  RouterStateSnapshot,
+  RouterStateSnapshot
 } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthenticationGuard implements CanActivate {
   constructor(private userService: UserService, private router: Router) {}
@@ -20,7 +20,7 @@ export class AuthenticationGuard implements CanActivate {
     const currentUser = this.userService.currentUser;
     const isSignedIn = this.userService.isSignedIn();
     const params = {
-      queryParams: { returnUrl: state.url },
+      queryParams: { returnUrl: state.url }
     };
 
     if (isSignedIn && currentUser) {

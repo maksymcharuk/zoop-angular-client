@@ -3,7 +3,7 @@ import { DOMService } from '../dom/dom.service';
 import { LoaderComponent } from '../../components/loader/loader.component';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class LoaderService {
   constructor(private dom: DOMService) {}

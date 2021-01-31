@@ -4,7 +4,7 @@ import {
   FormGroup,
   Validators,
   ValidationErrors,
-  NgForm,
+  NgForm
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ import { AlertsService } from '../../../../shared/services/alerts/alerts.service
 @Component({
   selector: 'backoffice-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss'],
+  styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
   // @ViewChild('updatePasswordFormRef') updatePasswordFormRef: NgForm

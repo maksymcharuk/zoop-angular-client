@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import {
   HttpTestingController,
-  HttpClientTestingModule,
+  HttpClientTestingModule
 } from '@angular/common/http/testing';
 
 import { OrdersService } from './orders.service';
@@ -12,11 +12,11 @@ describe('OrdersService', () => {
   let service: OrdersService;
   let localStorageService: LocalStorageService;
   const localStorageServiceStub = {
-    getItem: (key) => {
+    getItem: key => {
       if (key === 'accountId') {
         return accountId;
       }
-    },
+    }
   };
   const accountId = 1;
   const shopId = 1;
@@ -25,8 +25,8 @@ describe('OrdersService', () => {
       id: 1,
       customer_id: 1,
       status: 'new',
-      seller_id: 1,
-    },
+      seller_id: 1
+    }
   ];
 
   beforeEach(() => {
@@ -34,8 +34,8 @@ describe('OrdersService', () => {
       imports: [HttpClientTestingModule],
       providers: [
         OrdersService,
-        { provide: LocalStorageService, useValue: localStorageServiceStub },
-      ],
+        { provide: LocalStorageService, useValue: localStorageServiceStub }
+      ]
     });
     service = TestBed.inject(OrdersService);
     localStorageService = TestBed.inject(LocalStorageService);
@@ -51,7 +51,7 @@ describe('OrdersService', () => {
   });
 
   it('should get orders', () => {
-    service.getOrders(shopId).subscribe((data) => {
+    service.getOrders(shopId).subscribe(data => {
       expect(data).toEqual(dataStub);
     });
 

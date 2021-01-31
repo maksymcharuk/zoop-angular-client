@@ -6,7 +6,7 @@ import { AuthenticationService } from '../../shared/services/authentication/auth
   selector: 'app-backoffice',
   templateUrl: './backoffice.component.html',
   styleUrls: ['./backoffice.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 export class BackofficeComponent {
   constructor(
@@ -16,8 +16,8 @@ export class BackofficeComponent {
 
   public signOut(): void {
     this.authService.signOut().subscribe(
-      (res) => this.router.navigate(['/']),
-      (error) => this.router.navigate(['/'])
+      res => this.router.navigate(['/']),
+      error => this.router.navigate(['/'])
     );
   }
 }

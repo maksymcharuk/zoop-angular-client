@@ -8,7 +8,7 @@ describe('SignInSellerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SignInSellerComponent],
+      declarations: [SignInSellerComponent]
     }).compileComponents();
   }));
 

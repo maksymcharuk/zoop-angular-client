@@ -1,7 +1,11 @@
 <div class="customers">
-
-  <div class="customers__inner" *ngIf="customers$ | async as customers; else loading">
-    <div *ngIf="customers.length > 0; then customersList else firstCustomer"></div>
+  <div
+    class="customers__inner"
+    *ngIf="customers$ | async as customers; else loading"
+  >
+    <div
+      *ngIf="customers.length > 0; then customersList; else firstCustomer"
+    ></div>
 
     <ng-template #customersList>
       <div class="customers__title">
@@ -16,7 +20,9 @@
         </li>
       </ul>
 
-      <a class="customers__add-new" [routerLink]="['create']">Add new customer</a>
+      <a class="customers__add-new" [routerLink]="['create']"
+        >Add new customer</a
+      >
     </ng-template>
 
     <ng-template #firstCustomer>
@@ -24,12 +30,13 @@
         <h4>You have no customers yet</h4>
       </div>
 
-      <a class="customers__add-new" [routerLink]="['create']">Add new customer</a>
+      <a class="customers__add-new" [routerLink]="['create']"
+        >Add new customer</a
+      >
     </ng-template>
   </div>
 
   <ng-template #loading>
     <app-loader></app-loader>
   </ng-template>
-
 </div>

@@ -8,7 +8,7 @@ import { AbstractProductsService } from '../../../services/abstract-products/abs
 @Component({
   selector: 'app-abstract-product-edit',
   templateUrl: './abstract-product-edit.component.html',
-  styleUrls: ['./abstract-product-edit.component.scss'],
+  styleUrls: ['./abstract-product-edit.component.scss']
 })
 export class AbstractProductEditComponent implements OnInit {
   private abstractProductId: string;
@@ -23,14 +23,14 @@ export class AbstractProductEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.route.params.subscribe(params => {
       this.abstractProductId = params.id;
 
       this.abstractProductsService.getById(this.abstractProductId).subscribe(
         (res: any) => {
           this.abstractProduct$.next(res);
         },
-        (err) => {
+        err => {
           this.alertService.showAlertDanger(err.message);
         }
       );
@@ -39,10 +39,10 @@ export class AbstractProductEditComponent implements OnInit {
 
   onSubmit(data): void {
     this.abstractProductsService.update(this.abstractProductId, data).subscribe(
-      (res) => {
+      res => {
         this.router.navigate(['backoffice', 'abstract-products']);
       },
-      (err) => {
+      err => {
         this.alertService.showAlertDanger(err.message);
       }
     );

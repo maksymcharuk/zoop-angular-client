@@ -6,11 +6,11 @@ import {
   EmbeddedViewRef,
   ComponentRef,
   Type,
-  ElementRef,
+  ElementRef
 } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class DOMService {
   constructor(
@@ -31,7 +31,7 @@ export class DOMService {
 
     // set up component
     if (params) {
-      Object.keys(params).map((key) => {
+      Object.keys(params).map(key => {
         componentRef.instance[key] = params[key];
       });
     }

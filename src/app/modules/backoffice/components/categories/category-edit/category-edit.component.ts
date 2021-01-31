@@ -9,7 +9,7 @@ import { CategoriesService } from '../../../services/categories/categories.servi
 @Component({
   selector: 'backoffice-category-edit',
   templateUrl: './category-edit.component.html',
-  styleUrls: ['./category-edit.component.scss'],
+  styleUrls: ['./category-edit.component.scss']
 })
 export class CategoryEditComponent implements OnInit {
   private categoryId: string;
@@ -24,7 +24,7 @@ export class CategoryEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.route.params.subscribe(params => {
       this.categoryId = params.id;
 
       this.categoriesService.getCategoryById(this.categoryId).subscribe(
@@ -40,7 +40,7 @@ export class CategoryEditComponent implements OnInit {
 
   onSubmit(data): void {
     this.categoriesService.updateCategory(this.categoryId, data).subscribe(
-      (res) => {
+      res => {
         this.router.navigate(['backoffice', 'categories']);
       },
       (err: HttpErrorResponse) => {

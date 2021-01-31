@@ -8,7 +8,7 @@ import { AlertsService } from './../../../../../shared/services/alerts/alerts.se
 @Component({
   selector: 'backoffice-product-form',
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.scss'],
+  styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent implements OnInit {
   @Input() product;
@@ -38,7 +38,7 @@ export class ProductFormComponent implements OnInit {
       height: [''],
       width: [''],
       weight: [''],
-      status: [''],
+      status: ['']
     });
 
     if (this.product) {
@@ -73,7 +73,7 @@ export class ProductFormComponent implements OnInit {
       weight: this.productForm.get('weight').value,
       status: this.productForm.get('status').value
         ? Status.Active
-        : Status.Inactive,
+        : Status.Inactive
     });
   }
 }

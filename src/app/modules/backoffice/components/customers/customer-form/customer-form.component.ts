@@ -3,13 +3,13 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
-  AbstractControl,
+  AbstractControl
 } from '@angular/forms';
 
 @Component({
   selector: 'backoffice-customer-form',
   templateUrl: './customer-form.component.html',
-  styleUrls: ['./customer-form.component.scss'],
+  styleUrls: ['./customer-form.component.scss']
 })
 export class CustomerFormComponent implements OnInit {
   @Input() customer;
@@ -22,7 +22,7 @@ export class CustomerFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.customerForm = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', Validators.required]
     });
 
     if (this.customer) {
@@ -40,7 +40,7 @@ export class CustomerFormComponent implements OnInit {
     }
 
     this.save.emit({
-      name: this.nameCtrl.value,
+      name: this.nameCtrl.value
     });
   }
 }

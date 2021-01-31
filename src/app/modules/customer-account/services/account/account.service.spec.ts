@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import {
   HttpTestingController,
-  HttpClientTestingModule,
+  HttpClientTestingModule
 } from '@angular/common/http/testing';
 
 import { AccountService } from './account.service';
@@ -12,7 +12,7 @@ describe('AccountService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [AccountService],
+      providers: [AccountService]
     });
     service = TestBed.inject(AccountService);
   });

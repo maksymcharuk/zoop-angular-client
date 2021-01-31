@@ -19,19 +19,19 @@ describe('ProductEditComponent', () => {
   const fakeActivatedRoute = {
     params: of({ id: productId }),
     parent: {
-      params: of({ id: shopId }),
-    },
+      params: of({ id: shopId })
+    }
   };
 
   beforeEach(async(() => {
     testProducts = [
       { id: 1, name: 'Product 1' },
       { id: 2, name: 'Product 2' },
-      { id: 3, name: 'Product 3' },
+      { id: 3, name: 'Product 3' }
     ];
     fakeProductsService = jasmine.createSpyObj('ProductsService', [
       'getProducts',
-      'updateProduct',
+      'updateProduct'
     ]);
     getProductsSpy = fakeProductsService.getProducts.and.returnValue(
       of(testProducts)
@@ -45,8 +45,8 @@ describe('ProductEditComponent', () => {
       declarations: [ProductEditComponent],
       providers: [
         { provide: ActivatedRoute, useValue: fakeActivatedRoute },
-        { provide: ProductsService, useValue: fakeProductsService },
-      ],
+        { provide: ProductsService, useValue: fakeProductsService }
+      ]
     }).compileComponents();
   }));
 

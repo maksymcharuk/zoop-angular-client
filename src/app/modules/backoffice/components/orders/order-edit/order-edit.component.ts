@@ -8,7 +8,7 @@ import { OrdersService } from '../../../services/orders/orders.service';
 @Component({
   selector: 'backoffice-order-edit',
   templateUrl: './order-edit.component.html',
-  styleUrls: ['./order-edit.component.scss'],
+  styleUrls: ['./order-edit.component.scss']
 })
 export class OrderEditComponent implements OnInit {
   private orderId: string;
@@ -23,14 +23,14 @@ export class OrderEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.route.params.subscribe(params => {
       this.orderId = params.id;
 
       this.ordersService.getOrderById(this.orderId).subscribe(
         (res: any) => {
           this.order$.next(res);
         },
-        (err) => {
+        err => {
           this.alertService.showAlertDanger(err.message);
         }
       );
@@ -39,10 +39,10 @@ export class OrderEditComponent implements OnInit {
 
   onSubmit(data): void {
     this.ordersService.updateOrder(this.orderId, data).subscribe(
-      (res) => {
+      res => {
         this.router.navigate(['backoffice', 'orders']);
       },
-      (err) => {
+      err => {
         this.alertService.showAlertDanger(err.message);
       }
     );

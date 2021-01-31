@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { OrderProduct } from '../../interfaces/order-product.inteface';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class OrderCalculationsService {
   private baseUrl = '/order-calculations';

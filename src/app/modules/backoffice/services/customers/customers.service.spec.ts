@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import {
   HttpTestingController,
-  HttpClientTestingModule,
+  HttpClientTestingModule
 } from '@angular/common/http/testing';
 
 import { CustomersService } from './customers.service';
@@ -12,11 +12,11 @@ describe('CustomersService', () => {
   let service: CustomersService;
   let localStorageService: LocalStorageService;
   const localStorageServiceStub = {
-    getItem: (key) => {
+    getItem: key => {
       if (key === 'accountId') {
         return accountId;
       }
-    },
+    }
   };
   const accountId = 1;
   const shopId = 1;
@@ -24,8 +24,8 @@ describe('CustomersService', () => {
     {
       id: 174,
       name: 'Customer 1',
-      account_id: 2,
-    },
+      account_id: 2
+    }
   ];
 
   beforeEach(() => {
@@ -33,8 +33,8 @@ describe('CustomersService', () => {
       imports: [HttpClientTestingModule],
       providers: [
         CustomersService,
-        { provide: LocalStorageService, useValue: localStorageServiceStub },
-      ],
+        { provide: LocalStorageService, useValue: localStorageServiceStub }
+      ]
     });
     service = TestBed.inject(CustomersService);
     localStorageService = TestBed.inject(LocalStorageService);
@@ -50,7 +50,7 @@ describe('CustomersService', () => {
   });
 
   it('should get customers', () => {
-    service.getCustomers().subscribe((data) => {
+    service.getCustomers().subscribe(data => {
       expect(data).toEqual(dataStub);
     });
 
@@ -62,7 +62,7 @@ describe('CustomersService', () => {
   it('should create customer', () => {
     const customer = dataStub[0];
 
-    service.createCustomer({ name: customer.name }).subscribe((data) => {
+    service.createCustomer({ name: customer.name }).subscribe(data => {
       expect(data).toEqual(customer);
     });
 

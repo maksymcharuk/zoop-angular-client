@@ -1,4 +1,4 @@
 export enum DeliveryType {
   Pickup = 'pickup',
-  NovaPoshta = 'novaposhta',
+  NovaPoshta = 'novaposhta'
 }

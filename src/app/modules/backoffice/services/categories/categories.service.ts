@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Category } from '../../interfaces';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CategoriesService {
   constructor(private http: HttpClient) {}
@@ -16,7 +16,7 @@ export class CategoriesService {
 
   getSuitableParents(id?: string): Observable<Category[]> {
     const params = {
-      id: null,
+      id: null
     };
 
     if (id) {

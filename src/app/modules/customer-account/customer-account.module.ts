@@ -17,7 +17,7 @@ import { AccountComponent } from './components/account/account.component';
   declarations: [
     CustomerAccountComponent,
     DashboardComponent,
-    AccountComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +27,8 @@ import { AccountComponent } from './components/account/account.component';
     ReactiveFormsModule,
     NgbModule,
     ChartsModule,
-    SharedModule,
+    SharedModule
   ],
-  providers: [],
+  providers: []
 })
 export class CustomerAccountModule {}

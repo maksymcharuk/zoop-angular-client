@@ -16,9 +16,9 @@ describe('AuthenticationVerifyInterceptor', () => {
         {
           provide: HTTP_INTERCEPTORS,
           useClass: AuthenticationVerifyInterceptor,
-          multi: true,
-        },
-      ],
+          multi: true
+        }
+      ]
     });
   });
 

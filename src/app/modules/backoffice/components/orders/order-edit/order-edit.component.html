@@ -1,16 +1,11 @@
-
 <div class="order-edit">
-
   <div class="order-edit__inner" *ngIf="order$ | async as order; else loading">
     <h1 class="h3 mb-3 font-weight-normal">Edit order</h1>
-    <backoffice-order-form
-      [order]="order"
-      (save)="onSubmit($event)">
+    <backoffice-order-form [order]="order" (save)="onSubmit($event)">
     </backoffice-order-form>
   </div>
 
   <ng-template #loading>
     <app-loader></app-loader>
   </ng-template>
-
 </div>

@@ -19,19 +19,19 @@ describe('CategoryEditComponent', () => {
   const fakeActivatedRoute = {
     params: of({ id: categoryId }),
     parent: {
-      params: of({ id: shopId }),
-    },
+      params: of({ id: shopId })
+    }
   };
 
   beforeEach(async(() => {
     testCategories = [
       { id: 1, name: 'Category 1' },
       { id: 2, name: 'Category 2' },
-      { id: 3, name: 'Category 3' },
+      { id: 3, name: 'Category 3' }
     ];
     fakeCategoriesService = jasmine.createSpyObj('CategoriesService', [
       'getCategories',
-      'updateCategory',
+      'updateCategory'
     ]);
     getCategoriesSpy = fakeCategoriesService.getCategories.and.returnValue(
       of(testCategories)
@@ -45,8 +45,8 @@ describe('CategoryEditComponent', () => {
       declarations: [CategoryEditComponent],
       providers: [
         { provide: ActivatedRoute, useValue: fakeActivatedRoute },
-        { provide: CategoriesService, useValue: fakeCategoriesService },
-      ],
+        { provide: CategoriesService, useValue: fakeCategoriesService }
+      ]
     }).compileComponents();
   }));
 

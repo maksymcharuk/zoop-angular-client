@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { CatalogProduct } from '../../interfaces';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CatalogService {
   constructor(private http: HttpClient) {}

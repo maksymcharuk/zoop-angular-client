@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Order } from '../../../../interfaces';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class OrdersService {
   constructor(private http: HttpClient) {}

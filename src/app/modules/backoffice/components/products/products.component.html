@@ -1,7 +1,8 @@
 <div class="products">
-
   <div class="products__inner" *ngIf="products; else loading">
-    <div *ngIf="products.length > 0; then productsList else firstProduct"></div>
+    <div
+      *ngIf="products.length > 0; then productsList; else firstProduct"
+    ></div>
 
     <ng-template #productsList>
       <div class="products__title">
@@ -11,9 +12,21 @@
       <ul class="products__list">
         <li class="products__list-item" *ngFor="let product of products">
           <span class="products__list-item-img"></span>
-          <span class="products__list-item-name">{{ product.name }} - ${{ product.price }}</span>
-          <button class="btn btn-secondary products__list-item-button" [routerLink]="['edit', product._id]">Edit</button>
-          <button class="btn btn-danger products__list-item-button" (click)="deleteProduct(product._id)">Delete</button>
+          <span class="products__list-item-name"
+            >{{ product.name }} - ${{ product.price }}</span
+          >
+          <button
+            class="btn btn-secondary products__list-item-button"
+            [routerLink]="['edit', product._id]"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-danger products__list-item-button"
+            (click)="deleteProduct(product._id)"
+          >
+            Delete
+          </button>
         </li>
       </ul>
 
@@ -32,5 +45,4 @@
   <ng-template #loading>
     <app-loader></app-loader>
   </ng-template>
-
 </div>

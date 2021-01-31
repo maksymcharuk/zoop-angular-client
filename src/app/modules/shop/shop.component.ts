@@ -5,7 +5,7 @@ import { AlertsService } from '../../shared/services/alerts/alerts.service';
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss'],
+  styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
   constructor(private alertService: AlertsService) {}

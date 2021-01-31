@@ -5,7 +5,7 @@ import {
   Validators,
   ValidationErrors,
   NgForm,
-  AbstractControl,
+  AbstractControl
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -15,7 +15,7 @@ import { TokenService } from './../../../../shared/services/token/token.service'
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss'],
+  styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
   @ViewChild('signUpFormRef') signUpFormRef: NgForm;
@@ -35,7 +35,7 @@ export class SignUpComponent implements OnInit {
       {
         email: ['', Validators.required],
         password: ['', Validators.required],
-        confirmPassword: ['', Validators.required],
+        confirmPassword: ['', Validators.required]
       },
       { validators: [this.passwordValidator] }
     );
@@ -59,7 +59,7 @@ export class SignUpComponent implements OnInit {
     return password === confirmPassword
       ? null
       : {
-          passwordValidator: true,
+          passwordValidator: true
         };
   }
 
@@ -76,13 +76,13 @@ export class SignUpComponent implements OnInit {
     this.tokenService
       .registerAccount({
         email: this.emailCtrl.value,
-        password: this.passwordCtrl.value,
+        password: this.passwordCtrl.value
       })
       .subscribe(
         () => {
           this.router.navigate(['customer-account']);
         },
-        (err) => {
+        err => {
           this.alertService.showAlertDanger(err.error.message);
           this.submitButton.nativeElement.removeAttribute('disabled');
         }

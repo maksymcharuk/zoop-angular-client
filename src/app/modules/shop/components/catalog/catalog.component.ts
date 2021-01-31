@@ -10,7 +10,7 @@ import { CatalogService } from '../../services/catalog/catalog.service';
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss'],
+  styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit {
   // public products: OrderProduct[];

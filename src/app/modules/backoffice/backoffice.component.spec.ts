@@ -8,7 +8,7 @@ describe('BackofficeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [BackofficeComponent],
+      declarations: [BackofficeComponent]
     }).compileComponents();
   }));
 

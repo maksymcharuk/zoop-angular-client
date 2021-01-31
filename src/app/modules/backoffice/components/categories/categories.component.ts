@@ -5,7 +5,7 @@ import { CategoriesService } from '../../services/categories/categories.service'
 @Component({
   selector: 'backoffice-categories',
   templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss'],
+  styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
   public categories: any[];
@@ -13,16 +13,14 @@ export class CategoriesComponent implements OnInit {
   constructor(private categoriesService: CategoriesService) {}
 
   ngOnInit(): void {
-    this.categoriesService.getCategories().subscribe((categories) => {
+    this.categoriesService.getCategories().subscribe(categories => {
       this.categories = categories;
     });
   }
 
   deleteCategory(id: string): void {
     this.categoriesService.removeCategory(id).subscribe(() => {
-      this.categories = this.categories.filter(
-        (category) => category._id !== id
-      );
+      this.categories = this.categories.filter(category => category._id !== id);
     });
   }
 }

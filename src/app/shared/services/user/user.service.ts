@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { TokenService } from '../token/token.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class UserService {
   // TODO: Add specific type for User

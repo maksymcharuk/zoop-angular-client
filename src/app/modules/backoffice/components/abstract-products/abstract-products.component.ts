@@ -5,7 +5,7 @@ import { AbstractProductsService } from './../../services/abstract-products/abst
 @Component({
   selector: 'backoffice-abstract-products',
   templateUrl: './abstract-products.component.html',
-  styleUrls: ['./abstract-products.component.scss'],
+  styleUrls: ['./abstract-products.component.scss']
 })
 export class AbstractProductsComponent implements OnInit {
   public abstractProducts: any[];
@@ -13,7 +13,7 @@ export class AbstractProductsComponent implements OnInit {
   constructor(private abstractProductsService: AbstractProductsService) {}
 
   ngOnInit(): void {
-    this.abstractProductsService.getAll().subscribe((products) => {
+    this.abstractProductsService.getAll().subscribe(products => {
       this.abstractProducts = products;
     });
   }
@@ -21,7 +21,7 @@ export class AbstractProductsComponent implements OnInit {
   deleteProduct(id: string): void {
     this.abstractProductsService.remove(id).subscribe(() => {
       this.abstractProducts = this.abstractProducts.filter(
-        (product) => product._id !== id
+        product => product._id !== id
       );
     });
   }

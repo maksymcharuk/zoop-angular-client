@@ -1,16 +1,14 @@
-
 <div class="category-edit">
-
-  <div class="category-edit__inner" *ngIf="category$ | async as category; else loading">
+  <div
+    class="category-edit__inner"
+    *ngIf="category$ | async as category; else loading"
+  >
     <h1 class="h3 mb-3 font-weight-normal">Edit category</h1>
-    <backoffice-category-form
-      [category]="category"
-      (save)="onSubmit($event)">
+    <backoffice-category-form [category]="category" (save)="onSubmit($event)">
     </backoffice-category-form>
   </div>
 
   <ng-template #loading>
     <app-loader></app-loader>
   </ng-template>
-
 </div>

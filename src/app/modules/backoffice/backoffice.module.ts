@@ -53,7 +53,7 @@ import { AccountComponent } from './components/account/account.component';
     СustomersComponent,
     CustomerCreateComponent,
     CustomerFormComponent,
-    AccountComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -63,8 +63,8 @@ import { AccountComponent } from './components/account/account.component';
     ReactiveFormsModule,
     NgbModule,
     ChartsModule,
-    SharedModule,
+    SharedModule
   ],
-  providers: [],
+  providers: []
 })
 export class BackofficeModule {}

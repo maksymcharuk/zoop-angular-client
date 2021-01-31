@@ -7,7 +7,7 @@ import { CategoriesService } from '../../../services/categories/categories.servi
 @Component({
   selector: 'backoffice-abstract-product-form',
   templateUrl: './abstract-product-form.component.html',
-  styleUrls: ['./abstract-product-form.component.scss'],
+  styleUrls: ['./abstract-product-form.component.scss']
 })
 export class AbstractProductFormComponent implements OnInit {
   @Input() abstractProduct;
@@ -26,7 +26,7 @@ export class AbstractProductFormComponent implements OnInit {
     this.abstractProductForm = this.fb.group({
       name: ['', Validators.required],
       category: [''],
-      status: [''],
+      status: ['']
     });
 
     if (this.abstractProduct) {
@@ -50,7 +50,7 @@ export class AbstractProductFormComponent implements OnInit {
       category: this.abstractProductForm.get('category').value,
       status: this.abstractProductForm.get('status').value
         ? Status.Active
-        : Status.Inactive,
+        : Status.Inactive
     });
   }
 }

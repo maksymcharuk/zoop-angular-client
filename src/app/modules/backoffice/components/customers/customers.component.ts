@@ -7,7 +7,7 @@ import { CustomersService } from '../../services/customers/customers.service';
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.scss'],
+  styleUrls: ['./customers.component.scss']
 })
 export class СustomersComponent implements OnInit {
   public customers$: Observable<any>;

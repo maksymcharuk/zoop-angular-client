@@ -9,8 +9,12 @@
           type="email"
           id="inputEmail"
           class="form-control"
-          [class]="{ 'is-invalid': emailCtrl.invalid && emailCtrl.touched }">
-        <div *ngIf="emailCtrl.invalid && emailCtrl.touched" class="invalid-feedback">
+          [class]="{ 'is-invalid': emailCtrl.invalid && emailCtrl.touched }"
+        />
+        <div
+          *ngIf="emailCtrl.invalid && emailCtrl.touched"
+          class="invalid-feedback"
+        >
           <div *ngIf="emailCtrl.hasError('required')">
             This field is required.
           </div>
@@ -25,8 +29,14 @@
           type="password"
           id="inputPassword"
           class="form-control"
-          [class]="{ 'is-invalid': passwordCtrl.invalid && passwordCtrl.touched }">
-        <div *ngIf="passwordCtrl.invalid && passwordCtrl.touched" class="invalid-feedback">
+          [class]="{
+            'is-invalid': passwordCtrl.invalid && passwordCtrl.touched
+          }"
+        />
+        <div
+          *ngIf="passwordCtrl.invalid && passwordCtrl.touched"
+          class="invalid-feedback"
+        >
           <div *ngIf="passwordCtrl.hasError('required')">
             This field is required.
           </div>
@@ -34,6 +44,12 @@
       </div>
     </div>
 
-    <button #submitButton class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button
+      #submitButton
+      class="btn btn-lg btn-primary btn-block"
+      type="submit"
+    >
+      Sign in
+    </button>
   </form>
 </div>

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../../../../interfaces';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AbstractProductsService {
   private baseUrl = '/backoffice';
