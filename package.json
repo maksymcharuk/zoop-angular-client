@@ -6,10 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint && prettier --check .",
+    "lint": "ng lint",
     "e2e": "ng e2e",
-    "format": "prettier --write .",
-    "tslint-check": "tslint-config-prettier-check ./tslint.json"
+    "format": "prettier --write \"{src,e2e}/**/*.{ts,html,scss}\""
   },
   "husky": {
     "hooks": {
