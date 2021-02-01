@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { AlertsService } from '../../shared/services/alerts/alerts.service';
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss']
+  styleUrls: ['./shop.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ShopComponent implements OnInit {
   constructor(private alertService: AlertsService) {}
