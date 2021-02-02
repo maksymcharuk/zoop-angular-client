@@ -1,0 +1,141 @@
+$namespace: '.c-footer';
+
+#{$namespace} {
+  padding-top: 48px;
+  padding-bottom: 38px;
+
+  &-bottom,
+  &-top {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+  }
+
+  &-contacts,
+  &-copy,
+  &-guarantee,
+  &-payment,
+  &-social {
+    width: 33.333%;
+    padding: 0 15px;
+  }
+
+  &-guarantee,
+  &-payment {
+
+    @media (max-width: 1259.98px) {
+      width: 50%;
+      margin-bottom: 30px;
+    }
+  }
+
+  &-guarantee,
+  &-payment {
+
+    p {
+      max-width: 343px;
+    }
+
+    @media (max-width: 575.98px) {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+
+  &-contacts,
+  &-copy {
+    margin-left: auto;
+    max-width: 230px;
+
+    @media (max-width: 1259.98px) {
+      max-width: none;
+      margin-left: 0;
+    }
+  }
+
+  &-social {
+
+    @media (max-width: 1259.98px) {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &-contacts {
+
+    @media (max-width: 1259.98px) {
+      width: 100%;
+      margin-top: 30px;
+    }
+  }
+
+  &-copy {
+
+    @media (max-width: 1259.98px) {
+      width: 50%;
+    }
+  }
+
+  &-top {
+    margin-bottom: 20px;
+  }
+
+  &-language {
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 0 15px;
+
+    @media (min-width: 1260px) {
+      display: none;
+    }
+  }
+
+  &-language__list {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &-language__item {
+
+    &.is-active {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    &:not(:last-child) {
+
+      &::after {
+        opacity: 0.5;
+        content: '/';
+        margin-left: 10px;
+        margin-right: 12px;
+        margin-bottom: -2px;
+        display: inline-block;
+        vertical-align: middle;
+
+        @media (max-width: 767.98px) {
+          margin-left: 4px;
+          margin-right: 6px;
+        }
+      }
+    }
+  }
+
+  &-language__link {
+    display: inline-block;
+    vertical-align: middle;
+    color: currentColor;
+    padding: 5px 0;
+  }
+
+  &-phone {
+    color: #000;
+  }
+}

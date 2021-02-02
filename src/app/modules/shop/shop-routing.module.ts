@@ -18,7 +18,13 @@ const routes: Routes = [
     component: ShopComponent,
     children: [
       { path: '', component: HomeComponent },
-      { path: 'catalog', component: CatalogComponent },
+      {
+        path: 'catalog',
+        component: CatalogComponent,
+        data: {
+          breadcrumb: 'Каталог'
+        }
+      },
       { path: 'cart', component: CartComponent },
       { path: 'order', component: OrderComponent },
       {

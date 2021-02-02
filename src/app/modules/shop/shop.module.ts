@@ -10,6 +10,9 @@ import { ShopRoutingModule } from './shop-routing.module';
 
 import { ShopComponent } from './shop.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
+
 import { HomeComponent } from './components/home/home.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -22,6 +25,8 @@ import { SignInSellerComponent } from './components/sign-in-seller/sign-in-selle
   declarations: [
     ShopComponent,
     HeaderComponent,
+    FooterComponent,
+    BreadcrumbsComponent,
     HomeComponent,
     CatalogComponent,
     CartComponent,

@@ -1,0 +1,14 @@
+<div class="c-breadcrumbs">
+  <ul class="c-breadcrumbs-list">
+    <li *ngFor="let breadcrumb of breadcrumbs" class="c-breadcrumbs-item">
+      <p routerLinkActive #rla="routerLinkActive" [routerLinkActiveOptions]="{ exact: true }">
+        <a *ngIf="!rla.isActive" [routerLink]="breadcrumb.url">
+          {{ breadcrumb.label }}
+        </a>
+        <span *ngIf="rla.isActive" [routerLink]="breadcrumb.url">
+          {{ breadcrumb.label }}
+        </span>
+      </p>
+    </li>
+  </ul>
+</div>
