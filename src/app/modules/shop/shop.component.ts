@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 import { AlertsService } from '../../shared/services/alerts/alerts.service';
 
@@ -9,7 +11,9 @@ import { AlertsService } from '../../shared/services/alerts/alerts.service';
   encapsulation: ViewEncapsulation.None
 })
 export class ShopComponent implements OnInit {
-  constructor(private alertService: AlertsService) {}
+  public isHomePage = false;
+
+  constructor(private router: Router, private alertService: AlertsService) {}
 
   ngOnInit(): void {
     if (history.state.data && history.state.data.alertMessage) {

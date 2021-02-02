@@ -1,5 +1,7 @@
-<div class="shop">
+<div [ngClass]="{'is-home': isHomePage}">
   <app-header></app-header>
-  <router-outlet></router-outlet>
+  <div class="o-box">
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
 </div>
-

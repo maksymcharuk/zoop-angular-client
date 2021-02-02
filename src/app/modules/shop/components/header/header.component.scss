@@ -1,11 +1,240 @@
-$namespace: '.header';
+$namespace: '.c-header';
 
 #{$namespace} {
-  .brand-link {
-    color: inherit;
+  font-size: 20px;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 1031;
+
+  @media (max-width: 767.98px) {
+    padding-top: 16px;
+    margin-bottom: 30px;
   }
 
-  .btn + .btn {
-    margin-left: 1rem;
+  @media (max-width: 991.98px) {
+    font-size: 16px;
+  }
+
+  #{$namespace}-wrap {
+    display: flex;
+    align-items: flex-end;
+
+    @media (max-width: 991.98px) {
+      align-items: center;
+    }
+  }
+
+  #{$namespace}-logo {
+    margin-right: 30px;
+
+    img,
+    svg {
+
+      @media (max-width: 767.98px) {
+        width: 100px;
+        height: auto;
+      }
+    }
+  }
+
+  #{$namespace}-logo__link {
+    display: block;
+  }
+
+  #{$namespace}-nav {
+    margin-left: auto;
+
+    @media (max-width: 767.98px) {
+      display: none;
+    }
+  }
+
+  #{$namespace}-nav__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 -20px;
+
+    @media (max-width: 767.98px) {
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+  }
+
+  #{$namespace}-nav__link {
+    display: block;
+    padding: 5px 20px;
+    color: currentColor;
+
+    @media (max-width: 767.98px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    &:hover {
+      color: #54c88c;
+    }
+
+    &.is-active {
+      color: #54c88c;
+      pointer-events: none;
+    }
+  }
+
+  #{$namespace}-language {
+    margin-left: 60px;
+
+    @media (max-width: 767.98px) {
+      display: none;
+    }
+  }
+
+  #{$namespace}-language__list {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &.is-active {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+  #{$namespace}-language__item {
+
+    &:not(:last-child) {
+
+      &::after {
+        opacity: 0.5;
+        content: '/';
+        margin-left: 10px;
+        margin-right: 12px;
+        margin-bottom: -2px;
+        display: inline-block;
+        vertical-align: middle;
+
+        @media (max-width: 767.98px) {
+          margin-left: 4px;
+          margin-right: 6px;
+        }
+      }
+    }
+  }
+
+  #{$namespace}-language__link {
+    display: inline-block;
+    vertical-align: middle;
+    color: currentColor;
+    padding: 5px 0;
+
+    &:hover {
+      color: #54c88c;
+    }
+  }
+
+  #{$namespace}-hamburger {
+    margin-left: auto;
+    font-weight: 700;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  #{$namespace}-hamburger__link {
+    display: flex;
+    align-items: center;
+    color: currentColor;
+
+    &:hover {
+      color: #54c88c;
+    }
+  }
+
+  #{$namespace}-hamburger__text {
+    transition: opacity 0.3s ease;
+  }
+
+  #{$namespace}-hamburger__icon {
+    margin-left: 10px;
+    width: 28px;
+    height: 24px;
+    position: relative;
+
+    div {
+      position: absolute;
+      left: 0;
+      height: 4px;
+      width: 100%;
+      background-color: currentColor;
+      transition: top 0.3s ease, bottom 0.3s ease, transform 0.3s ease,
+      opacity 0.3s ease;
+
+      &:first-child {
+        top: 0;
+      }
+
+      &:nth-child(2) {
+        top: calc(50% - 2px);
+      }
+
+      &:nth-child(3) {
+        bottom: 0;
+      }
+    }
+  }
+
+  .is-home #{$namespace} {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    color: #fff;
+  }
+
+  .is-menu-open {
+    #{$namespace}-hamburger__link {
+      color: #24a060;
+    }
+
+    #{$namespace}-hamburger__text {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    #{$namespace}-hamburger__icon {
+
+      div {
+
+        &:first-child {
+          transform: rotate(-45deg);
+          top: calc(50% - 2px);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+          transform: rotate(-45deg);
+        }
+
+        &:nth-child(3) {
+          transform: rotate(45deg);
+          bottom: calc(50% - 2px);
+        }
+      }
+    }
+  }
+
+  .container,
+  .o-box {
+
+    @media (min-width: 768px) {
+      padding-left: 0;
+    }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      padding-right: 30px;
+    }
   }
 }
