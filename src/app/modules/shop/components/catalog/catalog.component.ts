@@ -13,7 +13,6 @@ import { CatalogService } from '../../services/catalog/catalog.service';
   styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit {
-  // public products: OrderProduct[];
   public products: CatalogProduct[];
   public loading = true;
 
@@ -30,45 +29,5 @@ export class CatalogComponent implements OnInit {
         this.products = products;
         this.loading = false;
       });
-
-    // this.productsService
-    //   .getProducts()
-    //   .pipe(
-    //     mergeMap((products: Product[]) => {
-    //       return this.cartService.cart$.pipe(
-    //         map((cart: Cart) => {
-    //           return products.map((product: Product) => {
-    //             const p = cart.products.find(
-    //               (p) => product._id === p.product._id
-    //             );
-    //             return {
-    //               product: p ? p.product : product,
-    //               quantity: p ? p.quantity : 0,
-    //             };
-    //           });
-    //         })
-    //       );
-    //     })
-    //   )
-    //   .subscribe((products: OrderProduct[]) => {
-    //     this.products = products;
-    //     this.loading = false;
-    //   });
-  }
-
-  addToCart(product: Product): void {
-    this.loading = true;
-    const orderProduct: OrderProduct = { product, quantity: 1 };
-    this.cartService.addToCart(orderProduct).subscribe(() => {
-      this.loading = false;
-    });
-  }
-
-  removeFromCart(product: Product): void {
-    this.loading = true;
-    const orderProduct: OrderProduct = { product, quantity: 1 };
-    this.cartService.removeFromCart(orderProduct).subscribe(() => {
-      this.loading = false;
-    });
   }
 }

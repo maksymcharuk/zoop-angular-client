@@ -1,29 +1,408 @@
 <app-breadcrumbs></app-breadcrumbs>
 
-<div class="products-list py-3">
-  <div
-    *ngFor="let product of products; index as i"
-    class="products-list__item pt-3 p-3 p-md-5 text-center overflow-hidden"
-    [ngClass]="{
-      'bg-light': i % 2 == 0,
-      'bg-dark': i % 2 == 1,
-      'text-white': i % 2 == 1
-    }"
-  >
-    <div class="my-3 py-3">
-      <h2 class="display-5">{{ product.products[0].name }}</h2>
-      <p class="lead">${{ product.products[0].price }}</p>
+<div class="c-catalog">
+  <h1 class="c-catalog-title h2">
+    Ялинки литі <sup class="text-gray-light font-400">3</sup>
+  </h1>
+
+  <div class="c-catalog-row">
+    <div class="c-catalog-main">
+      <div class="c-catalog-top">
+        <div class="c-catalog-sorting">
+          <select
+            name="catalog-sort"
+            id="catalog-sort"
+            class="c-catalog-sorting__select js-catalog-sort"
+          >
+            <option value="cheap">Найдешевші</option>
+            <option value="expensive">Найдорожчі</option>
+            <option value="popular" selected="">Найпопулярніші</option>
+          </select>
+
+          <ul class="c-catalog-sorting__list">
+            <li class="c-catalog-sorting__item">
+              <p>
+                <a
+                  href="https://hvoya.com/catalog/christmas-products/yalynky-lyti?sort_by=cheap"
+                  class="link-dotted"
+                >
+                  Найдешевші
+                </a>
+              </p>
+            </li>
+            <li class="c-catalog-sorting__item">
+              <p>
+                <a
+                  href="https://hvoya.com/catalog/christmas-products/yalynky-lyti?sort_by=expensive"
+                  class="link-dotted"
+                >
+                  Найдорожчі
+                </a>
+              </p>
+            </li>
+            <li class="c-catalog-sorting__item">
+              <p>Найпопулярніші</p>
+            </li>
+          </ul>
+        </div>
+
+        <p class="c-catalog-filter__toggle">
+          <a
+            href=""
+            class="c-catalog-filter__toggle-link js-filter-toggle link-dotted"
+            >Фільтри</a
+          >
+        </p>
+
+        <ul class="c-catalog-choosen__list">
+          <!---->
+          <!---->
+          <!---->
+        </ul>
+      </div>
+
+      <div class="c-catalog-list js-load-more-container">
+        <div
+          *ngFor="let product of products; index as i"
+          class="c-catalog-list__item"
+        >
+          <app-product-item [product]="product"></app-product-item>
+        </div>
+      </div>
+
+      <div class="js-load-more-button-container"></div>
     </div>
-    <div class="d-flex align-items-center">
-      <!-- <label class="add-to-cart-label" [attr.for]="'quantity-' + product.product._id">Qty:</label>
-      <input class="form-control ml-3" type="number" [attr.id]="'quantity-' + product.product._id" [(ngModel)]="product.quantity"> -->
-      <button
-        class="btn btn-info ml-3 add-to-cart-btn"
-        (click)="addToCart(product.products[0])"
-      >
-        Add to cart
-      </button>
+
+    <div class="c-catalog-filter">
+      <div class="c-catalog-filter__backdrop"></div>
+
+      <!-- <div class="c-catalog-filter__inner">
+        <button class="c-catalog-filter__close js-filter-close">
+          <svg
+            width="23"
+            height="23"
+            viewBox="0 0 23 23"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8.3 11.21L.42 19.092l2.828 2.828 7.882-7.881 7.963 7.963 2.828-2.829-7.963-7.963 8.382-8.382L19.511 0l-8.382 8.382-8.3-8.3L0 2.91l8.3 8.3z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </button>
+        <aside class="c-filter vue-filter">
+          <p class="c-filter-title text-lg"><b>Підбір по параметрам</b></p>
+          <div class="c-filter-item">
+            <button class="c-filter-toggle">Категорія</button>
+            <b-collapse
+              id="filterType"
+              role="tabpanel"
+              visible=""
+              class="c-filter-collapse"
+              ><div class="c-filter-collapse__wrap">
+                <div class="custom-control is-active">
+                  <a href="#"> Новорічні вироби </a>
+                </div>
+                <div class="custom-control"><a href="#"> Сировина </a></div>
+                <div class="custom-control"><a href="#"> Комплектуючі </a></div>
+                <div class="custom-control"><a href="#"> Обладнання </a></div>
+                <div class="custom-control">
+                  <a href="#"> Послуги переробки полімерів </a>
+                </div>
+              </div></b-collapse
+            >
+          </div>
+          <div class="c-filter-item">
+            <button class="c-filter-toggle">Підкатегорія</button>
+            <b-collapse
+              id="filterType"
+              role="tabpanel"
+              visible=""
+              class="c-filter-collapse"
+              ><div class="c-filter-collapse__wrap">
+                <div class="custom-control is-active">
+                  <a href="#"> Ялинки литі </a>
+                </div>
+                <div class="custom-control">
+                  <a href="#"> Ялинки плівочні </a>
+                </div>
+                <div class="custom-control"><a href="#"> Сосни </a></div>
+                <div class="custom-control">
+                  <a href="#"> Віночки і гірлянди </a>
+                </div>
+              </div></b-collapse
+            >
+          </div>
+          <div class="c-filter-item">
+            <button class="c-filter-toggle">Ціна</button>
+            <b-collapse
+              id="filterPrice"
+              role="tabpanel"
+              visible=""
+              class="c-filter-collapse"
+              ><div class="c-filter-collapse__wrap">
+                <div class="c-filter-price">
+                  <div class="c-filter-price__inputs">
+                    від
+                    <input class="form-control" />
+                    до
+                    <input class="form-control" />
+                    ₴
+                  </div>
+                  <div
+                    class="vue-slider vue-slider-ltr"
+                    style="padding: 7px; width: auto; height: 4px"
+                  >
+                    <div class="vue-slider-rail">
+                      <div
+                        class="vue-slider-process"
+                        style="
+                          height: 100%;
+                          top: 0px;
+                          left: 0%;
+                          width: 100%;
+                          transition-property: width, left;
+                          transition-duration: 0.5s;
+                        "
+                      ></div>
+                      <div
+                        class="vue-slider-dot vue-slider-dot-hover"
+                        style="
+                          width: 14px;
+                          height: 14px;
+                          transform: translate(-50%, -50%);
+                          top: 50%;
+                          left: 0%;
+                          transition: left 0.5s ease 0s;
+                        "
+                      >
+                        <div class="vue-slider-dot-handle"></div>
+                        <div
+                          class="vue-slider-dot-tooltip vue-slider-dot-tooltip-top"
+                        >
+                          <div
+                            class="vue-slider-dot-tooltip-inner vue-slider-dot-tooltip-inner-top"
+                          >
+                            <span class="vue-slider-dot-tooltip-text">1 ₴</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="vue-slider-dot vue-slider-dot-hover"
+                        style="
+                          width: 14px;
+                          height: 14px;
+                          transform: translate(-50%, -50%);
+                          top: 50%;
+                          left: 100%;
+                          transition: left 0.5s ease 0s;
+                        "
+                      >
+                        <div class="vue-slider-dot-handle"></div>
+                        <div
+                          class="vue-slider-dot-tooltip vue-slider-dot-tooltip-top"
+                        >
+                          <div
+                            class="vue-slider-dot-tooltip-inner vue-slider-dot-tooltip-inner-top"
+                          >
+                            <span class="vue-slider-dot-tooltip-text"
+                              >540,000 ₴</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div></b-collapse
+            >
+          </div>
+          <div class="c-filter-item">
+            <button class="c-filter-toggle">Висота</button>
+            <b-collapse
+              id="filterHeight"
+              role="tabpanel"
+              visible=""
+              class="c-filter-collapse"
+              ><div class="c-filter-collapse__wrap">
+                <div class="c-filter-price">
+                  <div class="c-filter-price__inputs">
+                    від
+                    <input class="form-control" />
+                    до
+                    <input class="form-control" />
+                    см
+                  </div>
+                  <div
+                    class="vue-slider vue-slider-ltr"
+                    style="padding: 7px; width: auto; height: 4px"
+                  >
+                    <div class="vue-slider-rail">
+                      <div
+                        class="vue-slider-process"
+                        style="
+                          height: 100%;
+                          top: 0px;
+                          left: 0%;
+                          width: 100%;
+                          transition-property: width, left;
+                          transition-duration: 0.5s;
+                        "
+                      ></div>
+                      <div
+                        class="vue-slider-dot vue-slider-dot-hover"
+                        style="
+                          width: 14px;
+                          height: 14px;
+                          transform: translate(-50%, -50%);
+                          top: 50%;
+                          left: 0%;
+                          transition: left 0.5s ease 0s;
+                        "
+                      >
+                        <div class="vue-slider-dot-handle"></div>
+                        <div
+                          class="vue-slider-dot-tooltip vue-slider-dot-tooltip-top"
+                        >
+                          <div
+                            class="vue-slider-dot-tooltip-inner vue-slider-dot-tooltip-inner-top"
+                          >
+                            <span class="vue-slider-dot-tooltip-text"
+                              >1 см</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="vue-slider-dot vue-slider-dot-hover"
+                        style="
+                          width: 14px;
+                          height: 14px;
+                          transform: translate(-50%, -50%);
+                          top: 50%;
+                          left: 100%;
+                          transition: left 0.5s ease 0s;
+                        "
+                      >
+                        <div class="vue-slider-dot-handle"></div>
+                        <div
+                          class="vue-slider-dot-tooltip vue-slider-dot-tooltip-top"
+                        >
+                          <div
+                            class="vue-slider-dot-tooltip-inner vue-slider-dot-tooltip-inner-top"
+                          >
+                            <span class="vue-slider-dot-tooltip-text"
+                              >65 см</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div></b-collapse
+            >
+          </div>
+          <div class="c-filter-item">
+            <button class="c-filter-toggle">Ширина</button>
+            <b-collapse
+              id="filterWidth"
+              role="tabpanel"
+              visible=""
+              class="c-filter-collapse"
+              ><div class="c-filter-collapse__wrap">
+                <div class="c-filter-price">
+                  <div class="c-filter-price__inputs">
+                    від
+                    <input class="form-control" />
+                    до
+                    <input class="form-control" />
+                    см
+                  </div>
+                  <div
+                    class="vue-slider vue-slider-ltr"
+                    style="padding: 7px; width: auto; height: 4px"
+                  >
+                    <div class="vue-slider-rail">
+                      <div
+                        class="vue-slider-process"
+                        style="
+                          height: 100%;
+                          top: 0px;
+                          left: 0%;
+                          width: 100%;
+                          transition-property: width, left;
+                          transition-duration: 0.5s;
+                        "
+                      ></div>
+                      <div
+                        class="vue-slider-dot vue-slider-dot-hover"
+                        style="
+                          width: 14px;
+                          height: 14px;
+                          transform: translate(-50%, -50%);
+                          top: 50%;
+                          left: 0%;
+                          transition: left 0.5s ease 0s;
+                        "
+                      >
+                        <div class="vue-slider-dot-handle"></div>
+                        <div
+                          class="vue-slider-dot-tooltip vue-slider-dot-tooltip-top"
+                        >
+                          <div
+                            class="vue-slider-dot-tooltip-inner vue-slider-dot-tooltip-inner-top"
+                          >
+                            <span class="vue-slider-dot-tooltip-text"
+                              >20 см</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="vue-slider-dot vue-slider-dot-hover"
+                        style="
+                          width: 14px;
+                          height: 14px;
+                          transform: translate(-50%, -50%);
+                          top: 50%;
+                          left: 100%;
+                          transition: left 0.5s ease 0s;
+                        "
+                      >
+                        <div class="vue-slider-dot-handle"></div>
+                        <div
+                          class="vue-slider-dot-tooltip vue-slider-dot-tooltip-top"
+                        >
+                          <div
+                            class="vue-slider-dot-tooltip-inner vue-slider-dot-tooltip-inner-top"
+                          >
+                            <span class="vue-slider-dot-tooltip-text"
+                              >170 см</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div></b-collapse
+            >
+          </div>
+          <div class="c-filter-bottom">
+            <div class="c-filter-submit">
+              <a href="" class="btn btn-primary btn-block"> Застосувати </a>
+            </div>
+            <p class="c-filter-reset">
+              <a href="#" class="link-dotted">
+                Скинути <span class="d-none d-lg-inline">всі фільтри</span></a
+              >
+            </p>
+          </div>
+        </aside>
+      </div> -->
     </div>
   </div>
-  <app-loader *ngIf="loading"></app-loader>
 </div>

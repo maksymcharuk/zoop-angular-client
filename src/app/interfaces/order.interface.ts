@@ -1,5 +1,5 @@
 import { DeliveryType, OrderStatus } from '../enums';
-import { OrderProduct } from './order-product.interface';
+import { OrderProduct } from '.';
 
 export interface Order {
   readonly _id: string;
