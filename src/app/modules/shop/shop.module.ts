@@ -21,6 +21,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInSellerComponent } from './components/sign-in-seller/sign-in-seller.component';
 
+import { ProductItemComponent } from './components/product-item/product-item.component';
+
 @NgModule({
   declarations: [
     ShopComponent,
@@ -33,7 +35,8 @@ import { SignInSellerComponent } from './components/sign-in-seller/sign-in-selle
     OrderComponent,
     SignInComponent,
     SignUpComponent,
-    SignInSellerComponent
+    SignInSellerComponent,
+    ProductItemComponent
   ],
   imports: [
     CommonModule,
