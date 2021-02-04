@@ -34,6 +34,15 @@
     />
   </div>
   <div class="product-form__input-group">
+    <label for="inputPrimaryImage">Primary Image</label>
+    <input
+      type="file"
+      id="inputPrimaryImage"
+      class="form-control"
+      (change)="onPrimaryImageChange($event.target.files)"
+    />
+  </div>
+  <div class="product-form__input-group">
     <label for="inputShortDescription">Short description</label>
     <input
       formControlName="shortDescription"

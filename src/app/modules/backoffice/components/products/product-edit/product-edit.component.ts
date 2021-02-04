@@ -42,7 +42,7 @@ export class ProductEditComponent implements OnInit {
         this.router.navigate(['backoffice', 'products']);
       },
       err => {
-        this.alertService.showAlertDanger(err.message);
+        this.alertService.showAlertDanger(err.error.message);
       }
     );
   }
