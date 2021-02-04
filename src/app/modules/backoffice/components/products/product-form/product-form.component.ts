@@ -1,6 +1,14 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  ChangeDetectorRef
+} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { FormDataUtils } from './../../../../../shared/utils';
 import { Status } from '../../../../../enums';
 import { AbstractProductsService } from './../../../services/abstract-products/abstract-products.service';
 import { AlertsService } from './../../../../../shared/services/alerts/alerts.service';
@@ -18,8 +26,11 @@ export class ProductFormComponent implements OnInit {
   public productForm: FormGroup;
   public abstractProducts$ = this.abstractProductsService.getAll();
 
+  private primaryImage;
+
   constructor(
     private fb: FormBuilder,
+    private cd: ChangeDetectorRef,
     private abstractProductsService: AbstractProductsService,
     private alertsService: AlertsService
   ) {}
@@ -32,8 +43,7 @@ export class ProductFormComponent implements OnInit {
       shortDescription: [''],
       description: [''],
       abstractProduct: ['', Validators.required],
-      imageUrl: [''],
-      stringId: [''],
+      stringId: ['', Validators.required],
       color: [''],
       height: [''],
       width: [''],
@@ -52,20 +62,24 @@ export class ProductFormComponent implements OnInit {
     }
   }
 
+  onPrimaryImageChange(files: FileList): void {
+    this.primaryImage = files[0];
+  }
+
   onSubmit(): void {
     if (!this.productForm.valid) {
       this.alertsService.showAlertDanger('Some required fields are missing');
       return;
     }
 
-    this.save.emit({
+    const formData = FormDataUtils.objToFormData({
       code: this.productForm.get('code').value,
       name: this.productForm.get('name').value,
       price: this.productForm.get('price').value,
+      primaryImage: this.primaryImage,
       shortDescription: this.productForm.get('shortDescription').value,
       description: this.productForm.get('description').value,
       abstractProduct: this.productForm.get('abstractProduct').value,
-      imageUrl: this.productForm.get('imageUrl').value,
       stringId: this.productForm.get('stringId').value,
       color: this.productForm.get('color').value,
       height: this.productForm.get('height').value,
@@ -75,5 +89,7 @@ export class ProductFormComponent implements OnInit {
         ? Status.Active
         : Status.Inactive
     });
+
+    this.save.emit(formData);
   }
 }
