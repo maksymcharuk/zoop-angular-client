@@ -22,7 +22,58 @@
               >Продукція</a
             >
           </li>
+          <div
+            *ngIf="isUserSignedIn; then signedInBlock; else signedOutBlock"
+          ></div>
+          <ng-template #signedInBlock>
+            <li class="c-header-nav__item">
+              <a
+                [routerLink]="['/customer-account']"
+                routerLinkActive="is-active"
+                class="c-header-nav__link"
+                >Акаунт</a
+              >
+            </li>
+            <li class="c-header-nav__item">
+              <a
+                *ngIf="isUserSeller"
+                [routerLink]="['/backoffice']"
+                routerLinkActive="is-active"
+                class="c-header-nav__link"
+                >Адмінка</a
+              >
+            </li>
+          </ng-template>
+          <ng-template #signedOutBlock>
+            <li class="c-header-nav__item">
+              <a
+                *ngIf="isUserSeller"
+                [routerLink]="['/sign-up']"
+                routerLinkActive="is-active"
+                class="c-header-nav__link"
+                >Реєстрація</a
+              >
+            </li>
+          </ng-template>
           <li class="c-header-nav__item">
+            <a
+              *ngIf="isUserSeller"
+              [routerLink]="['/sign-in']"
+              routerLinkActive="is-active"
+              class="c-header-nav__link"
+              >Логін</a
+            >
+          </li>
+          <li class="c-header-nav__item">
+            <a
+              *ngIf="isUserSeller"
+              [routerLink]="['/cart']"
+              routerLinkActive="is-active"
+              class="c-header-nav__link"
+              >Кошик ({{ cartProducts.length }})</a
+            >
+          </li>
+          <!-- <li class="c-header-nav__item">
             <a
               [routerLink]="['/about']"
               routerLinkActive="is-active"
@@ -37,7 +88,7 @@
               class="c-header-nav__link"
               >Контакти</a
             >
-          </li>
+          </li> -->
         </ul>
       </nav>
 

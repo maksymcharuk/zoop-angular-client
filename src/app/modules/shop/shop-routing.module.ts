@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ShopComponent } from './shop.component';
 import { HomeComponent } from './components/home/home.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
+import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { OrderComponent } from './components/order/order.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
           breadcrumb: 'Каталог'
         }
       },
+      { path: 'products/:code', component: ProductComponent },
       { path: 'cart', component: CartComponent },
       { path: 'order', component: OrderComponent },
       {

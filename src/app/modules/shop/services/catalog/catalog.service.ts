@@ -13,7 +13,7 @@ export class CatalogService {
     return this.http.get<CatalogProduct[]>('/catalog/products');
   }
 
-  public getProduct(id: string): Observable<CatalogProduct> {
-    return this.http.get<CatalogProduct>(`/catalog/product/${id}`);
+  public getProductByCode(code: string): Observable<CatalogProduct> {
+    return this.http.get<CatalogProduct>(`/catalog/products/${code}`);
   }
 }

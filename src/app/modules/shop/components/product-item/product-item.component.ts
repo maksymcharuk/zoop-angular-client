@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { AbstractProduct, Product } from '../../../../interfaces';
-import { OrderProduct } from '../../interfaces';
+import { Product } from '../../../../interfaces';
+import { CatalogProduct, OrderProduct } from '../../interfaces';
 import { CartService } from '../../services/cart/cart.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { CartService } from '../../services/cart/cart.service';
   styleUrls: ['./product-item.component.scss']
 })
 export class ProductItemComponent implements OnInit {
-  @Input() product: AbstractProduct;
+  @Input() product: CatalogProduct;
 
   public loading = false;
   public primaryProduct: Product;
