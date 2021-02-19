@@ -15,6 +15,7 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
 
 import { HomeComponent } from './components/home/home.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
+import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { OrderComponent } from './components/order/order.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -31,6 +32,7 @@ import { ProductItemComponent } from './components/product-item/product-item.com
     BreadcrumbsComponent,
     HomeComponent,
     CatalogComponent,
+    ProductComponent,
     CartComponent,
     OrderComponent,
     SignInComponent,

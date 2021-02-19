@@ -2,8 +2,9 @@ import { Status } from '../../../enums';
 import { Category, Product } from '../../../interfaces';
 
 export interface CatalogProduct {
-  category: Category;
+  readonly _id: string;
   name: string;
+  category: Category;
   products: Product[];
   status: Status;
   createdAt: Date;
