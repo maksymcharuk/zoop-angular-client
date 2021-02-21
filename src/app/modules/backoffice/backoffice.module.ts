@@ -30,6 +30,10 @@ import { СustomersComponent } from './components/customers/customers.component'
 import { CustomerCreateComponent } from './components/customers/customer-create/customer-create.component';
 import { CustomerFormComponent } from './components/customers/customer-form/customer-form.component';
 import { AccountComponent } from './components/account/account.component';
+import { ColorsComponent } from './components/colors/colors.component';
+import { ColorCreateComponent } from './components/colors/color-create/color-create.component';
+import { ColorEditComponent } from './components/colors/color-edit/color-edit.component';
+import { ColorFormComponent } from './components/colors/color-form/color-form.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +57,11 @@ import { AccountComponent } from './components/account/account.component';
     СustomersComponent,
     CustomerCreateComponent,
     CustomerFormComponent,
-    AccountComponent
+    AccountComponent,
+    ColorsComponent,
+    ColorCreateComponent,
+    ColorEditComponent,
+    ColorFormComponent
   ],
   imports: [
     BrowserModule,

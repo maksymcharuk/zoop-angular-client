@@ -1,0 +1,38 @@
+<div class="colors">
+    <div class="colors__inner" *ngIf="colors; else loading">
+        <div *ngIf="colors.length > 0; then colorsList; else firstColor"></div>
+
+        <ng-template #colorsList>
+            <div class="colors__title">
+                <h4>Colors</h4>
+            </div>
+
+            <ul class="colors__list">
+                <li class="colors__list-item" *ngFor="let color of colors">
+                    <span class="colors__list-item-img"></span>
+                    <span class="colors__list-item-name">{{ color.name }}</span>
+                    <button class="btn btn-secondary colors__list-item-button" [routerLink]="['edit', color._id]">
+            Edit
+          </button>
+                    <button class="btn btn-danger colors__list-item-button" (click)="deleteColor(color._id)">
+            Delete
+          </button>
+                </li>
+            </ul>
+
+            <a class="colors__add-new" [routerLink]="['create']">Add new Color</a>
+        </ng-template>
+
+        <ng-template #firstColor>
+            <div class="colors__title">
+                <h4>You have no colors yet</h4>
+            </div>
+
+            <a class="colors__add-new" [routerLink]="['create']">Add new Color</a>
+        </ng-template>
+    </div>
+
+    <ng-template #loading>
+        <app-loader></app-loader>
+    </ng-template>
+</div>

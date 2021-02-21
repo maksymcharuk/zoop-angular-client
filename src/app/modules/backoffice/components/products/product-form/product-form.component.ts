@@ -12,6 +12,7 @@ import { FormDataUtils } from './../../../../../shared/utils';
 import { Status } from '../../../../../enums';
 import { AbstractProductsService } from './../../../services/abstract-products/abstract-products.service';
 import { AlertsService } from './../../../../../shared/services/alerts/alerts.service';
+import { ColorsService } from '../../../services/colors/colors.service';
 
 @Component({
   selector: 'backoffice-product-form',
@@ -25,6 +26,7 @@ export class ProductFormComponent implements OnInit {
 
   public productForm: FormGroup;
   public abstractProducts$ = this.abstractProductsService.getAll();
+  public colors$ = this.colorsService.getColors();
 
   private primaryImage;
 
@@ -32,7 +34,8 @@ export class ProductFormComponent implements OnInit {
     private fb: FormBuilder,
     private cd: ChangeDetectorRef,
     private abstractProductsService: AbstractProductsService,
-    private alertsService: AlertsService
+    private alertsService: AlertsService,
+    private colorsService: ColorsService
   ) {}
 
   ngOnInit(): void {
@@ -59,6 +62,7 @@ export class ProductFormComponent implements OnInit {
       this.productForm
         .get('abstractProduct')
         .patchValue(this.product.abstractProduct._id);
+      this.productForm.get('color').patchValue(this.product.color._id);
     }
   }
 

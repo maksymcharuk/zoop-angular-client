@@ -19,6 +19,9 @@ import { OrderCreateComponent } from './components/orders/order-create/order-cre
 import { СustomersComponent } from './components/customers/customers.component';
 import { CustomerCreateComponent } from './components/customers/customer-create/customer-create.component';
 import { AccountComponent } from './components/account/account.component';
+import { ColorsComponent } from './components/colors/colors.component';
+import { ColorCreateComponent } from './components/colors/color-create/color-create.component';
+import { ColorEditComponent } from './components/colors/color-edit/color-edit.component';
 
 const routes: Routes = [
   {
@@ -44,6 +47,9 @@ const routes: Routes = [
       { path: 'categories', component: CategoriesComponent },
       { path: 'categories/create', component: CategoryCreateComponent },
       { path: 'categories/edit/:id', component: CategoryEditComponent },
+      { path: 'colors', component: ColorsComponent },
+      { path: 'colors/create', component: ColorCreateComponent },
+      { path: 'colors/edit/:id', component: ColorEditComponent },
       { path: 'orders', component: OrdersComponent },
       { path: 'orders/create', component: OrderCreateComponent },
       { path: 'customers', component: СustomersComponent },

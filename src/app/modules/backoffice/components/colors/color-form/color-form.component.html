@@ -1,0 +1,11 @@
+<form [formGroup]="colorForm" (ngSubmit)="onSubmit()" class="color-form mb-5">
+    <div class="color-form__input-group">
+        <label for="inputName">Name</label>
+        <input formControlName="name" type="text" id="inputName" class="form-control" placeholder="Product name" />
+    </div>
+    <div class="color-form__input-group">
+        <label for="inputCode">Value</label>
+        <input formControlName="value" type="text" id="inputValue" class="form-control" placeholder="Product value" />
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>

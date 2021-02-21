@@ -6,3 +6,4 @@ export { Token } from './token.interface';
 export { OrderProduct } from './order-product.interface';
 export { Order } from './order.interface';
 export { Category } from './category.interface';
+export { Color } from './color.interface';
