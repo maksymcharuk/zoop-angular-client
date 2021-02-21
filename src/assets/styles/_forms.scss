@@ -1,0 +1,120 @@
+.form {
+  &-group {
+    position: relative;
+    margin-bottom: 0;
+  }
+
+  &-label {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    line-height: 1.5;
+    pointer-events: none;
+    color: #8b989f;
+    transition: 0.3s ease;
+    padding: 14px 20px 0;
+  }
+
+  &-control:-webkit-autofill ~ &-label,
+  &-control:focus ~ &-label,
+  .is-fill ~ &-label {
+    font-size: 12px;
+    padding-top: 5px;
+  }
+
+  &-control.disabled ~ &-label,
+  &-control:disabled ~ &-label {
+    opacity: 0.5;
+  }
+
+  &-control {
+    background-color: #eef0ef;
+    width: 100%;
+    line-height: 1.5;
+    border: none;
+    border-bottom: 2px solid #eef0ef;
+    transition: 0.3s ease;
+    padding: 21px 20px 3px;
+    box-shadow: none;
+  }
+
+  &-control::placeholder {
+    color: #eef0ef;
+    transition: 0.3s ease;
+  }
+
+  &-control.active,
+  &-control:focus {
+    border-bottom-color: #24a060;
+  }
+
+  &-control.has-error {
+    border-bottom-color: #eb3131;
+  }
+
+  &-control.disabled,
+  &-control:disabled {
+    opacity: 0.5;
+  }
+
+  &-control.is-fill::-moz-placeholder,
+  &-control:focus::-moz-placeholder {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  &-control.is-fill:-ms-input-placeholder,
+  &-control:focus:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  &-control.is-fill::-ms-input-placeholder,
+  &-control:focus::-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  &-control.is-fill::placeholder,
+  &-control:focus::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  &-control:-webkit-autofill,
+  &-control:-webkit-autofill:active,
+  &-control:-webkit-autofill:focus,
+  &-control:-webkit-autofill:hover {
+    -webkit-box-shadow: 0 0 0 30px #eef0ef inset !important;
+  }
+
+  &-info {
+    padding-top: 4px;
+    font-size: 12px;
+    color: #a1a1a1;
+  }
+
+  &-section {
+    margin-bottom: 24px;
+  }
+
+  &-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  &-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+  }
+
+  &-col {
+    flex: 1 1 auto;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+
+  &-col--full {
+    width: 100%;
+  }
+}

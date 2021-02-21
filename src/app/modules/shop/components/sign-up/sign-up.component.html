@@ -1,89 +1,107 @@
-<div class="offset-md-3 col-md-6 mt-5">
-  <form
-    #signUpFormRef="ngForm"
-    [formGroup]="signUpForm"
-    (ngSubmit)="onSubmit()"
-  >
-    <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
-    <div class="form-row">
-      <div class="col-md-12 mb-3">
-        <label for="inputEmail">Email address</label>
-        <input
-          formControlName="email"
-          type="email"
-          id="inputEmail"
-          class="form-control"
-          [class]="{ 'is-invalid': emailCtrl.invalid && emailCtrl.touched }"
-        />
-        <div
-          *ngIf="emailCtrl.invalid && emailCtrl.touched"
-          class="invalid-feedback"
+<div class="container">
+  <div class="row">
+    <div class="offset-md-3 col-md-6">
+      <div class="form-wrapper">
+        <form
+          #signUpFormRef="ngForm"
+          [formGroup]="signUpForm"
+          (ngSubmit)="onSubmit()"
         >
-          <div *ngIf="emailCtrl.hasError('required')">
-            This field is required.
+          <div class="form-section">
+            <p class="form-title">Реєстрація</p>
+            <div class="form-row">
+              <div class="form-col">
+                <div class="form-group">
+                  <input
+                    autofocus="autofocus"
+                    formControlName="email"
+                    type="email"
+                    id="inputEmail"
+                    class="form-control"
+                    [class]="{
+                      'has-error': emailCtrl.invalid && emailCtrl.touched
+                    }"
+                  />
+                  <label for="inputEmail" class="form-label">Емейл</label>
+                  <small
+                    *ngIf="emailCtrl.invalid && emailCtrl.touched"
+                    class="text-danger"
+                    >Будь ласка, вкажіть eмейл</small
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-col">
+                <div class="form-group">
+                  <input
+                    formControlName="password"
+                    type="password"
+                    id="inputPassword"
+                    class="form-control"
+                    [class]="{
+                      'has-error': passwordCtrl.invalid && passwordCtrl.touched
+                    }"
+                  />
+                  <label for="inputPassword" class="form-label">Пароль</label>
+                  <small
+                    *ngIf="passwordCtrl.invalid && passwordCtrl.touched"
+                    class="text-danger"
+                    >Будь ласка, вкажіть пароль</small
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-col">
+                <div class="form-group">
+                  <input
+                    formControlName="confirmPassword"
+                    type="password"
+                    id="inputConfirmPassword"
+                    class="form-control"
+                    [class]="{
+                      'has-error':
+                        (confirmPasswordCtrl.invalid &&
+                          confirmPasswordCtrl.touched) ||
+                        (confirmPasswordCtrl.touched && signUpForm.invalid)
+                    }"
+                  />
+                  <label for="inputConfirmPassword" class="form-label"
+                    >Підтвердження паролю</label
+                  >
+                  <small
+                    *ngIf="
+                      (confirmPasswordCtrl.invalid &&
+                        confirmPasswordCtrl.touched) ||
+                      (confirmPasswordCtrl.touched && signUpForm.invalid)
+                    "
+                    class="text-danger"
+                  >
+                    <span *ngIf="confirmPasswordCtrl.hasError('required')">
+                      Будь ласка, вкажіть пароль ще раз
+                    </span>
+                    <span *ngIf="signUpForm.hasError('passwordValidator')">
+                      Паролі повинні співпадати
+                    </span>
+                  </small>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+          <div class="form-row">
+            <div class="form-col">
+              <button
+                #submitButton
+                type="submit"
+                class="btn btn-primary btn-block"
+              >
+                Відправити
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-    <div class="form-row">
-      <div class="col-md-12 mb-3">
-        <label for="inputPassword">Password</label>
-        <input
-          formControlName="password"
-          type="password"
-          id="inputPassword"
-          class="form-control"
-          [class]="{
-            'is-invalid': passwordCtrl.invalid && passwordCtrl.touched
-          }"
-        />
-        <div
-          *ngIf="passwordCtrl.invalid && passwordCtrl.touched"
-          class="invalid-feedback"
-        >
-          <div *ngIf="passwordCtrl.hasError('required')">
-            This field is required.
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="col-md-12 mb-3">
-        <label for="inputConfirmPassword">Password confirmation</label>
-        <input
-          formControlName="confirmPassword"
-          type="password"
-          id="inputConfirmPassword"
-          class="form-control"
-          [class]="{
-            'is-invalid':
-              (confirmPasswordCtrl.invalid && confirmPasswordCtrl.touched) ||
-              (confirmPasswordCtrl.touched && signUpForm.invalid)
-          }"
-        />
-        <div
-          *ngIf="
-            (confirmPasswordCtrl.invalid && confirmPasswordCtrl.touched) ||
-            (confirmPasswordCtrl.touched && signUpForm.invalid)
-          "
-          class="invalid-feedback"
-        >
-          <div *ngIf="confirmPasswordCtrl.hasError('required')">
-            This field is required.
-          </div>
-          <div *ngIf="signUpForm.hasError('passwordValidator')">
-            Passwords must match.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <button
-      #submitButton
-      class="btn btn-lg btn-primary btn-block"
-      type="submit"
-    >
-      Sign up
-    </button>
-  </form>
+  </div>
 </div>
